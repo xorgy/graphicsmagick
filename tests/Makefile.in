@@ -1,0 +1,660 @@
+# Makefile.in generated automatically by automake 1.5 from Makefile.am.
+
+# Copyright 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001
+# Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+@SET_MAKE@
+
+#
+# Makefile for ImageMagick read/write tests
+#
+# Copyright (C) 2000 ImageMagick Studio, a non-profit organization dedicated
+# to making software imaging solutions freely available.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files ("ImageMagick"),
+# to deal in ImageMagick without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense
+# and/or sell copies of ImageMagick, and to permit persons to whom the
+# ImageMagick is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of ImageMagick.
+#
+# The software is provided "as is", without warranty of any kind, express or
+# implied, including but not limited to the warranties of merchantability,
+# fitness for a particular purpose and noninfringement.  In no event shall
+# ImageMagick Studio be liable for any claim, damages or other liability,
+# whether in an action of contract, tort or otherwise, arising from, out of
+# or in connection with ImageMagick or the use or other dealings in
+# ImageMagick.
+#
+# Except as contained in this notice, the name of the ImageMagick Studio
+# shall not be used in advertising or otherwise to promote the sale, use or
+# other dealings in ImageMagick without prior written authorization from the
+# ImageMagick Studio.
+#
+
+SHELL = @SHELL@
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+top_builddir = ..
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+INSTALL_HEADER = $(INSTALL_DATA)
+transform = @program_transform_name@
+NORMAL_INSTALL = :
+PRE_INSTALL = :
+POST_INSTALL = :
+NORMAL_UNINSTALL = :
+PRE_UNINSTALL = :
+POST_UNINSTALL = :
+build_alias = @build_alias@
+build_triplet = @build@
+host_alias = @host_alias@
+host_triplet = @host@
+target_alias = @target_alias@
+target_triplet = @target@
+AMTAR = @AMTAR@
+AS = @AS@
+AWK = @AWK@
+BZIPDelegate = @BZIPDelegate@
+BrowseDelegate = @BrowseDelegate@
+CC = @CC@
+CGMDecodeDelegate = @CGMDecodeDelegate@
+CPP = @CPP@
+CXX = @CXX@
+CXXCPP = @CXXCPP@
+CatDelegate = @CatDelegate@
+ConvertDelegate = @ConvertDelegate@
+DELEGATES = @DELEGATES@
+DEPDIR = @DEPDIR@
+DLLDFLAGS = @DLLDFLAGS@
+DLLTOOL = @DLLTOOL@
+DOTDecodeDelegate = @DOTDecodeDelegate@
+DVIDecodeDelegate = @DVIDecodeDelegate@
+ECHO = @ECHO@
+EXEEXT = @EXEEXT@
+EchoDelegate = @EchoDelegate@
+EditorDelegate = @EditorDelegate@
+FIGDecodeDelegate = @FIGDecodeDelegate@
+GCJ = @GCJ@
+GCJFLAGS = @GCJFLAGS@
+GSColorDevice = @GSColorDevice@
+GSEPSDevice = @GSEPSDevice@
+GSMonoDevice = @GSMonoDevice@
+GSPDFDevice = @GSPDFDevice@
+GSPSDevice = @GSPSDevice@
+GnuplotDecodeDelegate = @GnuplotDecodeDelegate@
+HPGLDecodeDelegate = @HPGLDecodeDelegate@
+HTMLDecodeDelegate = @HTMLDecodeDelegate@
+ILBMDecodeDelegate = @ILBMDecodeDelegate@
+ILBMEncodeDelegate = @ILBMEncodeDelegate@
+INCLTDL = @INCLTDL@
+INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+LD = @LD@
+LIBLTDL = @LIBLTDL@
+LIBSTDC_LDFLAGS = @LIBSTDC_LDFLAGS@
+LIBTOOL = @LIBTOOL@
+LIB_BZLIB = @LIB_BZLIB@
+LIB_DL = @LIB_DL@
+LIB_DPS = @LIB_DPS@
+LIB_FPX = @LIB_FPX@
+LIB_GS = @LIB_GS@
+LIB_HDF = @LIB_HDF@
+LIB_JBIG = @LIB_JBIG@
+LIB_JP2 = @LIB_JP2@
+LIB_JPEG = @LIB_JPEG@
+LIB_LCMS = @LIB_LCMS@
+LIB_LF = @LIB_LF@
+LIB_MATH = @LIB_MATH@
+LIB_MPEG2 = @LIB_MPEG2@
+LIB_PNG = @LIB_PNG@
+LIB_THREAD = @LIB_THREAD@
+LIB_TIFF = @LIB_TIFF@
+LIB_TTF = @LIB_TTF@
+LIB_WMF = @LIB_WMF@
+LIB_X11 = @LIB_X11@
+LIB_XEXT = @LIB_XEXT@
+LIB_XML = @LIB_XML@
+LIB_XT = @LIB_XT@
+LIB_ZLIB = @LIB_ZLIB@
+LN_S = @LN_S@
+LPDelegate = @LPDelegate@
+LPRDelegate = @LPRDelegate@
+LZWDecodeDelegate = @LZWDecodeDelegate@
+LZWEncodeDelegate = @LZWEncodeDelegate@
+LaunchDelegate = @LaunchDelegate@
+MAGICKLIB = @MAGICKLIB@
+MAGICK_DEP_LIBS = @MAGICK_DEP_LIBS@
+MAINT = @MAINT@
+MAJOR_VERSION = @MAJOR_VERSION@
+MANDelegate = @MANDelegate@
+MICRO_VERSION = @MICRO_VERSION@
+MINOR_VERSION = @MINOR_VERSION@
+MPEGDecodeDelegate = @MPEGDecodeDelegate@
+MPEGEncodeDelegate = @MPEGEncodeDelegate@
+MVDelegate = @MVDelegate@
+MagickSharePath = @MagickSharePath@
+MogrifyDelegate = @MogrifyDelegate@
+OBJDUMP = @OBJDUMP@
+OBJEXT = @OBJEXT@
+PACKAGE = @PACKAGE@
+PERL = @PERL@
+PERL_MAKE_OPTIONS = @PERL_MAKE_OPTIONS@
+PGPDecodeDelegate = @PGPDecodeDelegate@
+POVDelegate = @POVDelegate@
+PSDelegate = @PSDelegate@
+PrintDelegate = @PrintDelegate@
+RADDecodeDelegate = @RADDecodeDelegate@
+RANLIB = @RANLIB@
+RC = @RC@
+RLEEncodeDelegate = @RLEEncodeDelegate@
+RMDelegate = @RMDelegate@
+SCANDecodeDelegate = @SCANDecodeDelegate@
+STRIP = @STRIP@
+ShowImageDelegate = @ShowImageDelegate@
+TXTDelegate = @TXTDelegate@
+VERSION = @VERSION@
+WMFDecodeDelegate = @WMFDecodeDelegate@
+WWWDecodeDelegate = @WWWDecodeDelegate@
+XCFDecodeDelegate = @XCFDecodeDelegate@
+X_CFLAGS = @X_CFLAGS@
+X_EXTRA_LIBS = @X_EXTRA_LIBS@
+X_LIBS = @X_LIBS@
+X_PRE_LIBS = @X_PRE_LIBS@
+ZipDelegate = @ZipDelegate@
+am__include = @am__include@
+am__quote = @am__quote@
+freetype_config = @freetype_config@
+install_sh = @install_sh@
+xml2_config = @xml2_config@
+
+AUTOMAKE_OPTIONS = 1.4 foreign
+
+INCLUDES = -I../ -I$(top_srcdir) -I../magick
+# ../magick/config.h is needed.
+
+#
+# Execute 'make check' to compile and run a test program
+#
+check_PROGRAMS = rwblob rwfile
+
+LDADD = ../magick/libMagick.la
+LDFLAGS = @LDFLAGS@
+
+rwblob_SOURCES = rwblob.c
+
+rwfile_SOURCES = rwfile.c
+
+CHECK_FILES = \
+	'LOGO:' \
+	'$(top_srcdir)/PerlMagick/t/input_p4.pbm'  \
+	'$(top_srcdir)/PerlMagick/t/input_p5.pgm' \
+	'$(top_srcdir)/PerlMagick/t/input_p6.ppm'
+
+
+@HasFPX_TRUE@FPX = FPX
+@HasFPX_FALSE@FPX = 
+
+@HasHDF_TRUE@HDF = HDF
+@HasHDF_FALSE@HDF = 
+
+@HasJBIG_TRUE@JBIG = JBIG
+@HasJBIG_FALSE@JBIG = 
+
+@HasJPEG_TRUE@JPEG = JPEG
+@HasJPEG_FALSE@JPEG = 
+
+@HasJP2_TRUE@JP2 = JP2
+@HasJP2_FALSE@JP2 = 
+
+@HasPNG_TRUE@MNG = MNG
+@HasPNG_FALSE@MNG = 
+@HasPNG_TRUE@PNG = PNG
+@HasPNG_FALSE@PNG = 
+
+@HasTIFF_TRUE@TIFF = TIFF
+@HasTIFF_FALSE@TIFF = 
+@HasTIFF_TRUE@PTIF = PTIF
+@HasTIFF_FALSE@PTIF = 
+
+@HasX11_TRUE@XWD = XWD
+@HasX11_FALSE@XWD = 
+
+# Formats that currently don't work: DPX EPDF EPT $(FPX) PICON
+CHECK_BLOB_FORMATS = \
+	AVS \
+	BMP \
+	CMYK \
+	DIB \
+	FAX \
+	G3 \
+	FITS \
+	GIF \
+	GIF87 \
+	GRAY \
+	$(HDF) \
+	$(JBIG) \
+	$(JPEG) \
+	$(JP2) \
+	MIFF \
+	$(MNG) \
+	MONO \
+	MTV \
+	P7 \
+	PAL \
+	PBM \
+	PCD \
+	PCDS \
+	PCX \
+	PGM \
+	PICT \
+	$(PNG) \
+	PNM \
+	PPM \
+	PSD \
+	RAS \
+	RGB \
+	RGBA \
+	SGI \
+	SUN \
+	TGA \
+	$(TIFF) \
+	UYVY \
+	VDA \
+	VICAR \
+	VIFF \
+	VST \
+	WBMP \
+	XBM \
+	XPM \
+	$(XWD) \
+	YUV
+
+
+# Formats that currently don't work: DPX EPDF $(FPX) PICON
+CHECK_FILE_FORMATS = \
+	AVS \
+	BMP \
+	CMYK \
+	DIB \
+	EPSF \
+	EPSI \
+	EPI \
+	EPS \
+	EPT \
+	FAX \
+	FITS \
+	GIF \
+	GRAY \
+	$(HDF) \
+	ICB \
+	$(JBIG) \
+	$(JPEG) \
+	$(JP2) \
+	MIFF \
+	$(MNG) \
+	MONO \
+	MTV \
+	PAL \
+	P7 \
+	PBM \
+	PCD \
+	PCDS \
+	PCX \
+	PGM \
+	PICT \
+	$(PNG) \
+	PNM \
+	PPM \
+	PS \
+	PSD \
+	RAS \
+	RGB \
+	RGBA \
+	SGI \
+	SUN \
+	TGA \
+	$(TIFF) \
+	UYVY \
+	VDA \
+	VICAR \
+	VIFF \
+	VST \
+	WBMP \
+	XBM \
+	XPM \
+	$(XWD) \
+	YUV
+
+subdir = tests
+mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+CONFIG_HEADER = $(top_builddir)/magick/magick_config.h
+CONFIG_CLEAN_FILES =
+check_PROGRAMS = rwblob$(EXEEXT) rwfile$(EXEEXT)
+am_rwblob_OBJECTS = rwblob.$(OBJEXT)
+rwblob_OBJECTS = $(am_rwblob_OBJECTS)
+rwblob_LDADD = $(LDADD)
+rwblob_DEPENDENCIES = ../magick/libMagick.la
+rwblob_LDFLAGS =
+am_rwfile_OBJECTS = rwfile.$(OBJEXT)
+rwfile_OBJECTS = $(am_rwfile_OBJECTS)
+rwfile_LDADD = $(LDADD)
+rwfile_DEPENDENCIES = ../magick/libMagick.la
+rwfile_LDFLAGS =
+
+DEFS = @DEFS@
+DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)/magick
+CPPFLAGS = @CPPFLAGS@
+LIBS = @LIBS@
+depcomp = $(SHELL) $(top_srcdir)/depcomp
+@AMDEP_TRUE@DEP_FILES = $(DEPDIR)/rwblob.Po $(DEPDIR)/rwfile.Po
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
+	$(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CCLD = $(CC)
+LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+CFLAGS = @CFLAGS@
+DIST_SOURCES = $(rwblob_SOURCES) $(rwfile_SOURCES)
+DIST_COMMON = Makefile.am Makefile.in
+SOURCES = $(rwblob_SOURCES) $(rwfile_SOURCES)
+
+all: all-am
+
+.SUFFIXES:
+.SUFFIXES: .c .lo .o .obj
+
+mostlyclean-libtool:
+	-rm -f *.lo
+
+clean-libtool:
+	-rm -rf .libs _libs
+
+distclean-libtool:
+	-rm -f libtool
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configure.ac $(ACLOCAL_M4)
+	cd $(top_srcdir) && \
+	  $(AUTOMAKE) --foreign  tests/Makefile
+Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
+	cd $(top_builddir) && \
+	  CONFIG_HEADERS= CONFIG_LINKS= \
+	  CONFIG_FILES=$(subdir)/$@ $(SHELL) ./config.status
+
+clean-checkPROGRAMS:
+	-test -z "$(check_PROGRAMS)" || rm -f $(check_PROGRAMS)
+rwblob$(EXEEXT): $(rwblob_OBJECTS) $(rwblob_DEPENDENCIES) 
+	@rm -f rwblob$(EXEEXT)
+	$(LINK) $(rwblob_LDFLAGS) $(rwblob_OBJECTS) $(rwblob_LDADD) $(LIBS)
+rwfile$(EXEEXT): $(rwfile_OBJECTS) $(rwfile_DEPENDENCIES) 
+	@rm -f rwfile$(EXEEXT)
+	$(LINK) $(rwfile_LDFLAGS) $(rwfile_OBJECTS) $(rwfile_LDADD) $(LIBS)
+
+mostlyclean-compile:
+	-rm -f *.$(OBJEXT) core *.core
+
+distclean-compile:
+	-rm -f *.tab.c
+
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/rwblob.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/rwfile.Po@am__quote@
+
+distclean-depend:
+	-rm -rf $(DEPDIR)
+
+.c.o:
+@AMDEP_TRUE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(COMPILE) -c `test -f $< || echo '$(srcdir)/'`$<
+
+.c.obj:
+@AMDEP_TRUE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(COMPILE) -c `cygpath -w $<`
+
+.c.lo:
+@AMDEP_TRUE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Plo' tmpdepfile='$(DEPDIR)/$*.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(LTCOMPILE) -c -o $@ `test -f $< || echo '$(srcdir)/'`$<
+CCDEPMODE = @CCDEPMODE@
+uninstall-info-am:
+
+tags: TAGS
+
+ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
+	list='$(SOURCES) $(HEADERS) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	  done | \
+	  $(AWK) '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	mkid -fID $$unique $(LISP)
+
+TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
+		$(TAGS_FILES) $(LISP)
+	tags=; \
+	here=`pwd`; \
+	list='$(SOURCES) $(HEADERS) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	  done | \
+	  $(AWK) '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	test -z "$(ETAGS_ARGS)$$unique$(LISP)$$tags" \
+	  || etags $(ETAGS_ARGS) $$tags  $$unique $(LISP)
+
+GTAGS:
+	here=`CDPATH=: && cd $(top_builddir) && pwd` \
+	  && cd $(top_srcdir) \
+	  && gtags -i $(GTAGS_ARGS) $$here
+
+distclean-tags:
+	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH
+
+DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+
+top_distdir = ..
+distdir = $(top_distdir)/$(PACKAGE)-$(VERSION)
+
+distdir: $(DISTFILES)
+	@for file in $(DISTFILES); do \
+	  if test -f $$file; then d=.; else d=$(srcdir); fi; \
+	  dir=`echo "$$file" | sed -e 's,/[^/]*$$,,'`; \
+	  if test "$$dir" != "$$file" && test "$$dir" != "."; then \
+	    $(mkinstalldirs) "$(distdir)/$$dir"; \
+	  fi; \
+	  if test -d $$d/$$file; then \
+	    cp -pR $$d/$$file $(distdir) \
+	    || exit 1; \
+	  else \
+	    test -f $(distdir)/$$file \
+	    || cp -p $$d/$$file $(distdir)/$$file \
+	    || exit 1; \
+	  fi; \
+	done
+check-am: all-am
+	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS)
+check: check-am
+all-am: Makefile
+
+installdirs:
+
+install: install-am
+install-exec: install-exec-am
+install-data: install-data-am
+uninstall: uninstall-am
+
+install-am: all-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+
+installcheck: installcheck-am
+install-strip:
+	$(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
+	  `test -z '$(STRIP)' || \
+	    echo "INSTALL_PROGRAM_ENV=STRIPPROG='$(STRIP)'"` install
+mostlyclean-generic:
+
+clean-generic:
+
+distclean-generic:
+	-rm -f Makefile $(CONFIG_CLEAN_FILES) stamp-h stamp-h[0-9]*
+
+maintainer-clean-generic:
+	@echo "This command is intended for maintainers to use"
+	@echo "it deletes files that may require special tools to rebuild."
+clean: clean-am
+
+clean-am: clean-checkPROGRAMS clean-generic clean-libtool clean-local \
+	mostlyclean-am
+
+distclean: distclean-am
+
+distclean-am: clean-am distclean-compile distclean-depend \
+	distclean-generic distclean-libtool distclean-tags
+
+dvi: dvi-am
+
+dvi-am:
+
+info: info-am
+
+info-am:
+
+install-data-am:
+
+install-exec-am:
+
+install-info: install-info-am
+
+install-man:
+
+installcheck-am:
+
+maintainer-clean: maintainer-clean-am
+
+maintainer-clean-am: distclean-am maintainer-clean-generic
+
+mostlyclean: mostlyclean-am
+
+mostlyclean-am: mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool
+
+uninstall-am: uninstall-info-am
+
+.PHONY: GTAGS all all-am check check-am clean clean-checkPROGRAMS \
+	clean-generic clean-libtool clean-local distclean \
+	distclean-compile distclean-depend distclean-generic \
+	distclean-libtool distclean-tags distdir dvi dvi-am info \
+	info-am install install-am install-data install-data-am \
+	install-exec install-exec-am install-info install-info-am \
+	install-man install-strip installcheck installcheck-am \
+	installdirs maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool tags uninstall uninstall-am \
+	uninstall-info-am
+
+
+#EXTRA_DIST = 
+
+clean-local:
+	rm -f out_*
+
+check-rwblob:
+	@status=0 ; \
+	format='' ; \
+	for format in $(CHECK_BLOB_FORMATS) ; \
+	do \
+	  format_failed=0 ; \
+	  for file in $(CHECK_FILES) ; \
+	  do \
+	    if MAGICK_DELEGATE_PATH=$(top_srcdir)/delegates ./rwblob $$file $$format ; \
+	    then \
+	      : ; \
+	    else \
+	      status=1 ; \
+	      format_failed=1 ; \
+	    fi \
+	  done ; \
+	  if test $$format_failed -gt 0 ; \
+	  then \
+	    failed="$$failed$$format " ; \
+	  fi ; \
+	done ; \
+	if test -n "$$failed" ; \
+	then \
+	  echo "Failed rwblob for formats: $$failed" ; \
+	fi ; \
+	exit $$status
+
+check-rwfile:
+	@status=0 ; \
+	format='' ; \
+	for format in $(CHECK_FILE_FORMATS) ; \
+	do \
+	  format_failed=0 ; \
+	  for file in $(CHECK_FILES) ; \
+	  do \
+	    if MAGICK_DELEGATE_PATH=$(top_srcdir)/delegates ./rwfile $$file $$format ; \
+	    then \
+	      : ; \
+	    else \
+	      status=1 ; \
+	      format_failed=1 ; \
+	    fi \
+	  done ; \
+	  if test $$format_failed -gt 0 ; \
+	  then \
+	    failed="$$failed$$format " ; \
+	  fi ; \
+	done ; \
+	if test -n "$$failed" ; \
+	then \
+	  echo "Failed rwfile for formats: $$failed" ; \
+	fi ; \
+	exit $$status
+
+check: check-rwfile check-rwblob
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

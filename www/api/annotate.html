@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>annotate - Methods to Annotate an Image</TITLE>
+<link rel="StyleSheet" href="../www/magick.css" type="text/css">
+</HEAD>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0085c0" alink="#0085c0"  vlink="#800080">
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">
+<FONT SIZE=-1>NAME</FONT></A>
+	<LI><A HREF="#synopsis">
+<FONT SIZE=-1>SYNOPSIS</FONT></A>
+	<LI><A HREF="#function descriptions">
+<FONT SIZE=-1>FUNCTION</FONT> 
+<FONT SIZE=-1>DESCRIPTIONS</FONT></A>
+	<UL>
+
+		<LI><A HREF="#annotateimage">AnnotateImage</A>
+		<LI><A HREF="#converttexttounicode">ConvertTextToUnicode</A>
+		<LI><A HREF="#gettypemetrics">GetTypeMetrics</A>
+	</UL>
+
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">
+<FONT SIZE=-1>NAME</FONT></A></H1>
+<P>annotate - Methods to Annotate an Image</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">
+<FONT SIZE=-1>SYNOPSIS</FONT></A></H1>
+<P>unsigned int  <STRONG>AnnotateImage</STRONG>( Image *image, DrawInfo *draw_info );</P>
+<P>unicode= <STRONG>ConvertTextToUnicode</STRONG>( text, count );</P>
+<P>unsigned int  <STRONG>GetTypeMetrics</STRONG>( Image *image, const DrawInfo *draw_info, TypeMetric *metrics );</P>
+<P>
+<HR>
+<H1><A NAME="function descriptions">
+<FONT SIZE=-1>FUNCTION</FONT> 
+<FONT SIZE=-1>DESCRIPTIONS</FONT></A></H1>
+<P>
+<H2><A NAME="annotateimage">AnnotateImage</A></H2>
+<blockquote>AnnotateImage() annotates an image with text. Optionally you can include any of the following bits of information about the image by embedding the appropriate special characters: </blockquote><P>The format of the AnnotateImage method is:</P>
+<blockquote>unsigned int AnnotateImage ( <A HREF="types/Image.html">Image</A> *image, <A HREF="types/DrawInfo.html">DrawInfo</A> *draw_info ); </blockquote><P>
+<FONT SIZE=-1>A</FONT> description of each parameter follows:</P>
+<DL><DT><DD><DL>
+<dd><p></p><dt><STRONG><A NAME="item_o_status%3A">status:</A></STRONG><BR>
+<DD>
+Method AnnotateImage returns True if the image is annotated otherwise False.
+<P></P>
+<dd><p></p><dt><STRONG><A NAME="item_o_image%3A">image:</A></STRONG><BR>
+<DD>
+The image.
+<P></P>
+<dd><p></p><dt><STRONG><A NAME="item_o_draw_info%3A">draw_info:</A></STRONG><BR>
+<DD>
+The draw info.
+<P></P></DL></DL>
+<P>
+<H2><A NAME="converttexttounicode">ConvertTextToUnicode</A></H2>
+<P>Method ConvertTextToUnicode converts an 
+<FONT SIZE=-1>ASCII</FONT> text string to Unicode and returns the Unicode translation and the character count.  Normal characters are just copied.</P>
+<P>The format of the ConvertTextToUnicode function is:</P>
+<blockquote>unicode=ConvertTextToUnicode ( text, count ); </blockquote><P>
+<FONT SIZE=-1>A</FONT> description of each parameter follows:</P>
+<DL><DT><DD><DL>
+<dd><p></p><dt><STRONG><A NAME="item_o_unicode%3A">unicode:</A></STRONG><BR>
+<DD>
+Method ConvertTextToUnicode returns a pointer to an unsigned short array representing the Unicode translation of the 
+<FONT SIZE=-1>ASCII</FONT> string.
+<P></P>
+<dd><p></p><dt><STRONG><A NAME="item_o_text%3A">text:</A></STRONG><BR>
+<DD>
+Specifies a pointer to a character array that contains the text to convert.
+<P></P>
+<dd><p></p><dt><STRONG><A NAME="item_o_count%3A">count:</A></STRONG><BR>
+<DD>
+The number of characters that were translated from 
+<FONT SIZE=-1>ASCII</FONT> to Unicode is returned in this unsigned integer pointer.
+<P></P></DL></DL>
+<P>
+<H2><A NAME="gettypemetrics">GetTypeMetrics</A></H2>
+<blockquote>GetTypeMetrics() returns the following information for the specified font and text: </blockquote><DL><DT><DD><DL>
+<dd><p></p><dt><STRONG><A NAME="item_o">o</A></STRONG><BR>
+<DD>
+character width, expressed in integer pixels o character height, expressed in integer pixels o ascent, expressed in 26.6 fixed point pixels o descent, expressed in 26.6 fixed point pixels o text width, expressed in 26.6 fixed point pixels o text height, expressed in 26.6 fixed point pixels o maximum horizontal advance, expressed in 26.6 fixed point pixels
+<P></P></DL></DL>
+<P>The format of the GetTypeMetrics method is:</P>
+<blockquote>unsigned int GetTypeMetrics ( <A HREF="types/Image.html">Image</A> *image, const <A HREF="types/DrawInfo.html">DrawInfo</A> *draw_info, TypeMetric *metrics ); </blockquote><P>
+<FONT SIZE=-1>A</FONT> description of each parameter follows:</P>
+<DL><DT><DD><DL>
+<dd><p></p><dt><STRONG>image:</STRONG><BR>
+<DD>
+The image.
+<P></P>
+<dd><p></p><dt><STRONG>draw_info:</STRONG><BR>
+<DD>
+The draw info.
+<P></P>
+<dd><p></p><dt><STRONG><A NAME="item_o_metrics%3A">metrics:</A></STRONG><BR>
+<DD>
+Return the font metrics in this structure.
+</DL></DL>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (X11; U; SunOS 5.6 sun4u) [Netscape]">
+   <meta name="Author" content="Bob Friesenhahn">
+   <meta name="Description" content="Description of PixelPacket structure members.">
+   <title>PixelPacket Structure</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#1F00FF" vlink="#9900DD" alink="#FF0000">
+
+<center>
+<h1>
+PixelPacket Structure</h1></center>
+The <i>PixelPacket</i> structure is used to represent pixels in ImageMagick.
+ImageMagick may be compiled to support 32 or 64 bit pixels. The size of
+PixelPacket is controlled by the value of the <i>QuantumDepth</i> define.
+The default is 64 bit pixels, which provide the best accuracy. If memory
+consumption must be minimized, or processing time must be minimized, then
+ImageMagick may be compiled with QuantumDepth=8. The following table shows
+the relationship between <i>QuantumDepth</i>, the type of <i>Quantum</i>,
+and the overall <i>PixelPacket</i> size.
+<br>&nbsp;
+<table BORDER BGCOLOR="#CCCCCC" >
+<caption>
+<center><b>Effect Of QuantumDepth Values</b></center>
+</caption>
+
+<tr>
+<td>
+<center><b>QuantumDepth</b></center>
+</td>
+
+<td>
+<center><b>Quantum Type</b></center>
+</td>
+
+<td>
+<center><b>PixelPacket Size</b></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>8</center>
+</td>
+
+<td>
+<center>unsigned char</center>
+</td>
+
+<td>
+<center>32 bits</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>16</center>
+</td>
+
+<td>
+<center>unsigned short</center>
+</td>
+
+<td>
+<center>64 bits</center>
+</td>
+</tr>
+</table>
+
+<p>The members of the <i>PixelPacket</i> structure, and their interpretation,
+are shown in the following table:
+<br>&nbsp;
+<table BORDER BGCOLOR="#CCCCCC" >
+<caption><b>PixelPacket Structure Members</b></caption>
+
+<tr>
+<td ROWSPAN="2">
+<center><b>Member</b></center>
+</td>
+
+<td ROWSPAN="2">
+<center><b>Type</b></center>
+</td>
+
+<td COLSPAN="3">
+<center><b>Interpretation</b></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><a href="Enumerations.html#ColorspaceType">RGBColorspace</a></center>
+</td>
+
+<td>
+<center><a href="Enumerations.html#ColorspaceType">RGBColorspace</a> +
+<a href="Image.html#matte">matte</a></center>
+</td>
+
+<td>
+<center><a href="Enumerations.html#ColorspaceType">CMYKColorspace</a></center>
+</td>
+</tr>
+
+<tr>
+<td><font size=-1>red</font></td>
+
+<td><font size=-1>Quantum</font></td>
+
+<td><font size=-1>Red</font></td>
+
+<td><font size=-1>Red</font></td>
+
+<td><font size=-1>Cyan</font></td>
+</tr>
+
+<tr>
+<td><font size=-1>green</font></td>
+
+<td><font size=-1>Quantum</font></td>
+
+<td><font size=-1>Green</font></td>
+
+<td><font size=-1>Green</font></td>
+
+<td><font size=-1>Magenta</font></td>
+</tr>
+
+<tr>
+<td><font size=-1>blue</font></td>
+
+<td><font size=-1>Quantum</font></td>
+
+<td><font size=-1>Blue</font></td>
+
+<td><font size=-1>Blue</font></td>
+
+<td><font size=-1>Yellow</font></td>
+</tr>
+
+<tr>
+<td><font size=-1>opacity</font></td>
+
+<td><font size=-1>Quantum</font></td>
+
+<td><font size=-1>Ignored</font></td>
+
+<td><font size=-1>Opacity</font></td>
+
+<td><font size=-1>Black</font></td>
+</tr>
+</table>
+
+<br>&nbsp;
+</body>
+</html>

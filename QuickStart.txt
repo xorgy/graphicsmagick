@@ -1,0 +1,117 @@
+Configuration Files:
+
+  ImageMagick depends on a number of external configuration files which
+  include colors.mgk, delegates.mgk, magic.mgk, type.mgk, and modules.mgk.
+  ImageMagick searches in the following order, and will use the first
+  configuration file found:
+
+      <current directory>/
+      <client path>/
+      $HOME/.magick/
+      $MAGICK_HOME/
+      MagickLibPath
+      MagickModulesPath
+      MagickSharePath
+
+  Where MagickSharePath, MagickLibPath, and MagickModulesPath are
+  defined by the configure program on Unix, and default to
+  /usr/local/share/ImageMagick/, /usr/local/lib/ImageMagick/ and
+  /usr/local/lib/ImageMagick/modules/coders/ respectively.
+
+  MagickLibPath and MagickModulesPath, and are defined under Win32, VMS, and
+  Macintosh as c:\ImageMagick\, sys$login, and the current directory
+  respectively.
+
+
+Environment Variables:
+
+  In addition to the MAGICK_HOME environment variable defined above, you may
+  find these variables useful:
+
+      MAGICK_CACHE_THRESHOLD	megabytes of memory available to pixel cache
+      TMPDIR			path to store temporary files
+      LD_LIBRARY_PATH		path to libMagick.so
+
+
+Unix/Linux/Darwin/Cygwin Install:
+
+  Download
+
+      ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-5.4.1.tar.gz
+
+  and type
+
+      gunzip -c ImageMagick-5.4.1.tar.gz | tar xvf -
+      cd ImageMagick-5.4.1
+      ./configure -prefix=/usr/local
+      make
+      make install
+      identify -verbose logo:
+
+  Alternatively, download the appropriate binary from
+  ftp://ftp.imagemagick.org/pub/ImageMagick/binaries.  The Unix
+  binaries must be installed in the /usr/local.  If you require a
+  different install directory, follow these steps (here we assume an
+  install directory of /opt/ImageMagick):
+
+      gunzip -c ImageMagick-*.tar.gz | tar xvf -
+      /bin/mv share/ImageMagick/* /opt/ImageMagick
+      /bin/mv lib/ImageMagick/* /opt/ImageMagick
+      /bin/mv lib/ImageMagick/modules/coders/* /opt/ImageMagick
+      /bin/mv lib/libMagick* /opt/ImageMagick
+      /bin/mv bin/* /opt/ImageMagick
+      setenv LD_LIBRARY_PATH /opt/ImageMagick 
+      setenv MAGICK_HOME /opt/ImageMagick 
+      /opt/ImageMagick/convert
+
+
+Win2K, WinME, NT, Win98, Win95 Install:
+
+  Download
+
+      ftp://ftp.imagemagick.org/pub/ImageMagick/win2k/ImageMagick-win2k.zip
+
+  and double click on it to extract the distribution.
+
+  Select Start->Programs->Command Prompt.  In the Command Prompt window type
+
+      cd ImageMagick
+      identify -verbose logo:
+
+  Alternatively, download the ImageMagick Win2K source
+
+      ftp://ftp.imagemagick.org/pub/ImageMagick/win2k/ImageMagick-5.4.1.zip
+
+  and read README.txt for detailed instructions on compiling the ImageMagick
+  source.
+
+
+MAC Install:
+
+  Download
+
+      ftp://ftp.imagemagick.org/pub/ImageMagick/mac/ImageMagick-mac.sit
+
+  and double click on it to extract the distribution.   Move to the
+  ImageMagick folder and double click on the convert program icon.
+  Next, type
+
+      -verbose logo: logo.jpg
+
+  in the command window and choose File->Quit to exit.
+
+  Alternatively, download the ImageMagick Classic Macintosh source
+
+      ftp://ftp.imagemagick.org/pub/ImageMagick/mac/ImageMagick-5.4.1.sit
+
+  and double click on the Make AppleScript script to build from the source.
+
+
+VMS Install:
+
+  Type
+
+      unzip ImageMagick-5.4.1.zip
+      set default [.imagemagick]
+      @make
+      identify -verbose logo:
