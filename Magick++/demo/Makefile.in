@@ -1,0 +1,533 @@
+# Makefile.in generated automatically by automake 1.4a from Makefile.am
+
+# Copyright 1994, 1995, 1996, 1997, 1998, 1999, 2000
+# Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+SHELL = @SHELL@
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+
+top_builddir = ../..
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+INSTALL_STRIP_FLAG =
+transform = @program_transform_name@
+
+NORMAL_INSTALL = :
+PRE_INSTALL = :
+POST_INSTALL = :
+NORMAL_UNINSTALL = :
+PRE_UNINSTALL = :
+POST_UNINSTALL = :
+
+@SET_MAKE@
+build_alias = @build_alias@
+build_triplet = @build@
+host_alias = @host_alias@
+host_triplet = @host@
+target_alias = @target_alias@
+target_triplet = @target@
+AMDEP = @AMDEP@
+AMTAR = @AMTAR@
+AS = @AS@
+AWK = @AWK@
+BZIPDelegate = @BZIPDelegate@
+BrowseDelegate = @BrowseDelegate@
+CC = @CC@
+CGMDecodeDelegate = @CGMDecodeDelegate@
+CPP = @CPP@
+CXX = @CXX@
+CXXCPP = @CXXCPP@
+CatDelegate = @CatDelegate@
+ConvertDelegate = @ConvertDelegate@
+DELEGATES = @DELEGATES@
+DEPDIR = @DEPDIR@
+DLLDFLAGS = @DLLDFLAGS@
+DLLTOOL = @DLLTOOL@
+DOTDecodeDelegate = @DOTDecodeDelegate@
+DVIDecodeDelegate = @DVIDecodeDelegate@
+EXEEXT = @EXEEXT@
+EchoDelegate = @EchoDelegate@
+EditorDelegate = @EditorDelegate@
+FIGDecodeDelegate = @FIGDecodeDelegate@
+GCJ = @GCJ@
+GCJFLAGS = @GCJFLAGS@
+GSColorDevice = @GSColorDevice@
+GSEPSDevice = @GSEPSDevice@
+GSMonoDevice = @GSMonoDevice@
+GSPDFDevice = @GSPDFDevice@
+GSPSDevice = @GSPSDevice@
+GnuplotDecodeDelegate = @GnuplotDecodeDelegate@
+HPGLDecodeDelegate = @HPGLDecodeDelegate@
+HTMLDecodeDelegate = @HTMLDecodeDelegate@
+ILBMDecodeDelegate = @ILBMDecodeDelegate@
+ILBMEncodeDelegate = @ILBMEncodeDelegate@
+INCLTDL = @INCLTDL@
+LD = @LD@
+LIBLTDL = @LIBLTDL@
+LIBSTDC_LDFLAGS = @LIBSTDC_LDFLAGS@
+LIBTOOL = @LIBTOOL@
+LIB_BZLIB = @LIB_BZLIB@
+LIB_DL = @LIB_DL@
+LIB_DPS = @LIB_DPS@
+LIB_FPX = @LIB_FPX@
+LIB_GS = @LIB_GS@
+LIB_HDF = @LIB_HDF@
+LIB_JBIG = @LIB_JBIG@
+LIB_JP2 = @LIB_JP2@
+LIB_JPEG = @LIB_JPEG@
+LIB_LCMS = @LIB_LCMS@
+LIB_LF = @LIB_LF@
+LIB_MATH = @LIB_MATH@
+LIB_PNG = @LIB_PNG@
+LIB_THREAD = @LIB_THREAD@
+LIB_TIFF = @LIB_TIFF@
+LIB_TTF = @LIB_TTF@
+LIB_WMF = @LIB_WMF@
+LIB_X11 = @LIB_X11@
+LIB_XEXT = @LIB_XEXT@
+LIB_XML = @LIB_XML@
+LIB_XT = @LIB_XT@
+LIB_ZLIB = @LIB_ZLIB@
+LN_S = @LN_S@
+LPDelegate = @LPDelegate@
+LPRDelegate = @LPRDelegate@
+LZWDecodeDelegate = @LZWDecodeDelegate@
+LZWEncodeDelegate = @LZWEncodeDelegate@
+LaunchDelegate = @LaunchDelegate@
+MAGICKLIB = @MAGICKLIB@
+MAINT = @MAINT@
+MAJOR_VERSION = @MAJOR_VERSION@
+MAKEINFO = @MAKEINFO@
+MANDelegate = @MANDelegate@
+MICRO_VERSION = @MICRO_VERSION@
+MINOR_VERSION = @MINOR_VERSION@
+MPEGDecodeDelegate = @MPEGDecodeDelegate@
+MPEGEncodeDelegate = @MPEGEncodeDelegate@
+MVDelegate = @MVDelegate@
+MagickSharePath = @MagickSharePath@
+MogrifyDelegate = @MogrifyDelegate@
+OBJDUMP = @OBJDUMP@
+OBJEXT = @OBJEXT@
+PACKAGE = @PACKAGE@
+PERL = @PERL@
+PERL_MAKE_OPTIONS = @PERL_MAKE_OPTIONS@
+PGPDecodeDelegate = @PGPDecodeDelegate@
+POVDelegate = @POVDelegate@
+PSDelegate = @PSDelegate@
+PrintDelegate = @PrintDelegate@
+RADDecodeDelegate = @RADDecodeDelegate@
+RANLIB = @RANLIB@
+RLEEncodeDelegate = @RLEEncodeDelegate@
+RMDelegate = @RMDelegate@
+SCANDecodeDelegate = @SCANDecodeDelegate@
+STRIP = @STRIP@
+ShowImageDelegate = @ShowImageDelegate@
+TXTDelegate = @TXTDelegate@
+VERSION = @VERSION@
+WMFDecodeDelegate = @WMFDecodeDelegate@
+WWWDecodeDelegate = @WWWDecodeDelegate@
+XCFDecodeDelegate = @XCFDecodeDelegate@
+X_CFLAGS = @X_CFLAGS@
+ZipDelegate = @ZipDelegate@
+freetype_config = @freetype_config@
+install_sh = @install_sh@
+
+#
+# Makefile for Magick++ demo programs
+#
+# Copyright Bob Friesenhahn, 1999, 2000, 2001
+#
+
+
+AUTOMAKE_OPTIONS = 1.4
+
+INCLUDES = -I$(srcdir)/../lib -I../.. -I$(top_srcdir)
+
+check_PROGRAMS = button demo detrans flip gravity piddle shapes zoom
+
+LDADD = ../lib/libMagick++.la ../../magick/libMagick.la
+
+button_SOURCES = button.cpp
+demo_SOURCES = demo.cpp
+detrans_SOURCES = detrans.cpp
+flip_SOURCES = flip.cpp
+gravity_SOURCES = gravity.cpp
+piddle_SOURCES = piddle.cpp
+shapes_SOURCES = shapes.cpp
+zoom_SOURCES = zoom.cpp
+
+EXTRA_DIST = Generic.ttf model.miff smile.miff smile_anim.miff tile.miff
+
+CLEANFILES = *_out.miff
+
+ZOOM_FILTERS = point box triangle hermite hanning hamming blackman gaussian \
+	       quadratic cubic catrom mitchell lanczos bessel sinc
+
+ZOOM_GEOMETRY = 600x600
+subdir = Magick++/demo
+mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+CONFIG_HEADER = ../../magick/config.h
+CONFIG_CLEAN_FILES = 
+check_PROGRAMS =  button$(EXEEXT) demo$(EXEEXT) detrans$(EXEEXT) \
+flip$(EXEEXT) gravity$(EXEEXT) piddle$(EXEEXT) shapes$(EXEEXT) \
+zoom$(EXEEXT)
+
+DEFS = @DEFS@ -I. -I$(srcdir) -I../../magick
+CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@
+X_LIBS = @X_LIBS@
+X_EXTRA_LIBS = @X_EXTRA_LIBS@
+X_PRE_LIBS = @X_PRE_LIBS@
+am_button_OBJECTS =  button.$(OBJEXT)
+button_OBJECTS =  $(am_button_OBJECTS)
+button_LDADD = $(LDADD)
+button_DEPENDENCIES =  ../lib/libMagick++.la ../../magick/libMagick.la
+button_LDFLAGS = 
+am_demo_OBJECTS =  demo.$(OBJEXT)
+demo_OBJECTS =  $(am_demo_OBJECTS)
+demo_LDADD = $(LDADD)
+demo_DEPENDENCIES =  ../lib/libMagick++.la ../../magick/libMagick.la
+demo_LDFLAGS = 
+am_detrans_OBJECTS =  detrans.$(OBJEXT)
+detrans_OBJECTS =  $(am_detrans_OBJECTS)
+detrans_LDADD = $(LDADD)
+detrans_DEPENDENCIES =  ../lib/libMagick++.la ../../magick/libMagick.la
+detrans_LDFLAGS = 
+am_flip_OBJECTS =  flip.$(OBJEXT)
+flip_OBJECTS =  $(am_flip_OBJECTS)
+flip_LDADD = $(LDADD)
+flip_DEPENDENCIES =  ../lib/libMagick++.la ../../magick/libMagick.la
+flip_LDFLAGS = 
+am_gravity_OBJECTS =  gravity.$(OBJEXT)
+gravity_OBJECTS =  $(am_gravity_OBJECTS)
+gravity_LDADD = $(LDADD)
+gravity_DEPENDENCIES =  ../lib/libMagick++.la ../../magick/libMagick.la
+gravity_LDFLAGS = 
+am_piddle_OBJECTS =  piddle.$(OBJEXT)
+piddle_OBJECTS =  $(am_piddle_OBJECTS)
+piddle_LDADD = $(LDADD)
+piddle_DEPENDENCIES =  ../lib/libMagick++.la ../../magick/libMagick.la
+piddle_LDFLAGS = 
+am_shapes_OBJECTS =  shapes.$(OBJEXT)
+shapes_OBJECTS =  $(am_shapes_OBJECTS)
+shapes_LDADD = $(LDADD)
+shapes_DEPENDENCIES =  ../lib/libMagick++.la ../../magick/libMagick.la
+shapes_LDFLAGS = 
+am_zoom_OBJECTS =  zoom.$(OBJEXT)
+zoom_OBJECTS =  $(am_zoom_OBJECTS)
+zoom_LDADD = $(LDADD)
+zoom_DEPENDENCIES =  ../lib/libMagick++.la ../../magick/libMagick.la
+zoom_LDFLAGS = 
+CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+CXXFLAGS = @CXXFLAGS@
+CXXLD = $(CXX)
+CXXLINK = $(LIBTOOL) --mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+DIST_SOURCES =  $(button_SOURCES) $(demo_SOURCES) $(detrans_SOURCES) \
+$(flip_SOURCES) $(gravity_SOURCES) $(piddle_SOURCES) $(shapes_SOURCES) \
+$(zoom_SOURCES)
+depcomp = $(SHELL) $(top_srcdir)/depcomp
+DEP_FILES =  @AMDEP@ $(DEPDIR)/button.Po $(DEPDIR)/demo.Po \
+$(DEPDIR)/detrans.Po $(DEPDIR)/flip.Po $(DEPDIR)/gravity.Po \
+$(DEPDIR)/piddle.Po $(DEPDIR)/shapes.Po $(DEPDIR)/zoom.Po
+DIST_COMMON =  Makefile.am Makefile.in
+
+
+DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+
+GZIP_ENV = --best
+SOURCES = $(button_SOURCES) $(demo_SOURCES) $(detrans_SOURCES) $(flip_SOURCES) $(gravity_SOURCES) $(piddle_SOURCES) $(shapes_SOURCES) $(zoom_SOURCES)
+OBJECTS = $(am_button_OBJECTS) $(am_demo_OBJECTS) $(am_detrans_OBJECTS) $(am_flip_OBJECTS) $(am_gravity_OBJECTS) $(am_piddle_OBJECTS) $(am_shapes_OBJECTS) $(am_zoom_OBJECTS)
+
+all: all-redirect
+.SUFFIXES:
+.SUFFIXES: .c .cpp .lo .o .obj
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu Magick++/demo/Makefile
+
+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
+	cd $(top_builddir) \
+	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+
+mostlyclean-checkPROGRAMS:
+
+clean-checkPROGRAMS:
+	-test -z "$(check_PROGRAMS)" || rm -f $(check_PROGRAMS)
+
+distclean-checkPROGRAMS:
+
+maintainer-clean-checkPROGRAMS:
+
+mostlyclean-compile:
+	-rm -f *.o core *.core
+	-rm -f *.$(OBJEXT)
+
+clean-compile:
+
+distclean-compile:
+	-rm -f *.tab.c
+
+maintainer-clean-compile:
+
+mostlyclean-libtool:
+	-rm -f *.lo
+
+clean-libtool:
+	-rm -rf .libs _libs
+
+distclean-libtool:
+
+maintainer-clean-libtool:
+
+button$(EXEEXT): $(button_OBJECTS) $(button_DEPENDENCIES)
+	@rm -f button$(EXEEXT)
+	$(CXXLINK) $(button_LDFLAGS) $(button_OBJECTS) $(button_LDADD) $(LIBS)
+
+demo$(EXEEXT): $(demo_OBJECTS) $(demo_DEPENDENCIES)
+	@rm -f demo$(EXEEXT)
+	$(CXXLINK) $(demo_LDFLAGS) $(demo_OBJECTS) $(demo_LDADD) $(LIBS)
+
+detrans$(EXEEXT): $(detrans_OBJECTS) $(detrans_DEPENDENCIES)
+	@rm -f detrans$(EXEEXT)
+	$(CXXLINK) $(detrans_LDFLAGS) $(detrans_OBJECTS) $(detrans_LDADD) $(LIBS)
+
+flip$(EXEEXT): $(flip_OBJECTS) $(flip_DEPENDENCIES)
+	@rm -f flip$(EXEEXT)
+	$(CXXLINK) $(flip_LDFLAGS) $(flip_OBJECTS) $(flip_LDADD) $(LIBS)
+
+gravity$(EXEEXT): $(gravity_OBJECTS) $(gravity_DEPENDENCIES)
+	@rm -f gravity$(EXEEXT)
+	$(CXXLINK) $(gravity_LDFLAGS) $(gravity_OBJECTS) $(gravity_LDADD) $(LIBS)
+
+piddle$(EXEEXT): $(piddle_OBJECTS) $(piddle_DEPENDENCIES)
+	@rm -f piddle$(EXEEXT)
+	$(CXXLINK) $(piddle_LDFLAGS) $(piddle_OBJECTS) $(piddle_LDADD) $(LIBS)
+
+shapes$(EXEEXT): $(shapes_OBJECTS) $(shapes_DEPENDENCIES)
+	@rm -f shapes$(EXEEXT)
+	$(CXXLINK) $(shapes_LDFLAGS) $(shapes_OBJECTS) $(shapes_LDADD) $(LIBS)
+
+zoom$(EXEEXT): $(zoom_OBJECTS) $(zoom_DEPENDENCIES)
+	@rm -f zoom$(EXEEXT)
+	$(CXXLINK) $(zoom_LDFLAGS) $(zoom_OBJECTS) $(zoom_LDADD) $(LIBS)
+
+tags: TAGS
+
+ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
+	list='$(SOURCES) $(HEADERS) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	  done | \
+	  $(AWK) '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	mkid -fID $$unique $(LISP)
+
+TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
+		$(TAGS_FILES) $(LISP)
+	tags=; \
+	here=`pwd`; \
+	list='$(SOURCES) $(HEADERS) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	  done | \
+	  $(AWK) '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	test -z "$(ETAGS_ARGS)$$unique$(LISP)$$tags" \
+	  || etags $(ETAGS_ARGS) $$tags  $$unique $(LISP)
+
+mostlyclean-tags:
+
+clean-tags:
+
+distclean-tags:
+	-rm -f TAGS ID
+
+maintainer-clean-tags:
+
+@AMDEP@include $(DEPDIR)/button.Po
+@AMDEP@include $(DEPDIR)/demo.Po
+@AMDEP@include $(DEPDIR)/detrans.Po
+@AMDEP@include $(DEPDIR)/flip.Po
+@AMDEP@include $(DEPDIR)/gravity.Po
+@AMDEP@include $(DEPDIR)/piddle.Po
+@AMDEP@include $(DEPDIR)/shapes.Po
+@AMDEP@include $(DEPDIR)/zoom.Po
+
+mostlyclean-depend:
+
+clean-depend:
+
+distclean-depend:
+	-rm -rf $(DEPDIR)
+
+maintainer-clean-depend:
+
+@AMDEP@CXXDEPMODE = @CXXDEPMODE@
+
+.cpp.o:
+@AMDEP@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP@	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' @AMDEPBACKSLASH@
+@AMDEP@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CXXCOMPILE) -c -o $@ `test -f $< || echo '$(srcdir)/'`$<
+
+.cpp.lo:
+@AMDEP@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@AMDEP@	depfile='$(DEPDIR)/$*.Plo' tmpdepfile='$(DEPDIR)/$*.TPlo' @AMDEPBACKSLASH@
+@AMDEP@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(LTCXXCOMPILE) -c -o $@ `test -f $< || echo '$(srcdir)/'`$<
+
+.cpp.obj:
+@AMDEP@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP@	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' @AMDEPBACKSLASH@
+@AMDEP@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CXXCOMPILE) -c -o $@ `cygpath -w $<`
+
+
+distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
+
+distdir: $(DISTFILES)
+	@for file in $(DISTFILES); do \
+	  d=$(srcdir); \
+	  if test -d $$d/$$file; then \
+	    cp -pR $$d/$$file $(distdir) \
+	    || exit 1; \
+	  else \
+	    test -f $(distdir)/$$file \
+	    || cp -p $$d/$$file $(distdir)/$$file \
+	    || exit 1; \
+	  fi; \
+	done
+info-am:
+info: info-am
+dvi-am:
+dvi: dvi-am
+check-am: all-am
+	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS)
+check: check-am
+installcheck-am:
+installcheck: installcheck-am
+install-exec-am:
+install-exec: install-exec-am
+
+install-data-am:
+install-data: install-data-am
+
+install-am: all-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+install: install-am
+uninstall-am:
+uninstall: uninstall-am
+all-am: Makefile
+all-redirect: all-am
+install-strip:
+	$(MAKE) $(AM_MAKEFLAGS) INSTALL_STRIP_FLAG=-s install
+installdirs:
+
+
+mostlyclean-generic:
+
+clean-generic:
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
+
+distclean-generic:
+	-rm -f Makefile $(CONFIG_CLEAN_FILES)
+	-rm -f config.cache config.log stamp-h stamp-h[0-9]*
+
+maintainer-clean-generic:
+	-rm -f Makefile.in
+mostlyclean-am:  mostlyclean-checkPROGRAMS mostlyclean-compile \
+		mostlyclean-libtool mostlyclean-tags mostlyclean-depend \
+		mostlyclean-generic
+
+mostlyclean: mostlyclean-am
+
+clean-am:  clean-checkPROGRAMS clean-compile clean-libtool clean-tags \
+		clean-depend clean-generic mostlyclean-am
+
+clean: clean-am
+
+distclean-am:  distclean-checkPROGRAMS distclean-compile \
+		distclean-libtool distclean-tags distclean-depend \
+		distclean-generic clean-am
+	-rm -f libtool
+
+distclean: distclean-am
+
+maintainer-clean-am:  maintainer-clean-checkPROGRAMS \
+		maintainer-clean-compile maintainer-clean-libtool \
+		maintainer-clean-tags maintainer-clean-depend \
+		maintainer-clean-generic distclean-am
+	@echo "This command is intended for maintainers to use;"
+	@echo "it deletes files that may require special tools to rebuild."
+
+maintainer-clean: maintainer-clean-am
+
+.PHONY: mostlyclean-checkPROGRAMS distclean-checkPROGRAMS \
+clean-checkPROGRAMS maintainer-clean-checkPROGRAMS mostlyclean-compile \
+distclean-compile clean-compile maintainer-clean-compile \
+mostlyclean-libtool distclean-libtool clean-libtool \
+maintainer-clean-libtool tags mostlyclean-tags distclean-tags \
+clean-tags maintainer-clean-tags mostlyclean-depend distclean-depend \
+clean-depend maintainer-clean-depend distdir info-am info dvi-am dvi \
+check check-am installcheck-am installcheck install-exec-am \
+install-exec install-data-am install-data install-am install \
+uninstall-am uninstall all-redirect all-am all install-strip \
+installdirs mostlyclean-generic distclean-generic clean-generic \
+maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+
+
+check:
+	env srcdir=$(srcdir) ./button
+	env srcdir=$(srcdir) ./demo
+	env srcdir=$(srcdir) ./flip
+	env srcdir=$(srcdir) ./gravity
+	env srcdir=$(srcdir) ./piddle
+	env srcdir=$(srcdir) ./shapes
+	for filter in $(ZOOM_FILTERS) ; do  \
+	  echo "$$filter ..." ; \
+	  env srcdir=$(srcdir) ./zoom $$filter $(ZOOM_GEOMETRY) $(srcdir)/model.miff zoom_$${filter}_out.miff ; \
+	done
+
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

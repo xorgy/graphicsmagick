@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<TITLE>montage - Methods to Create a Montage.</TITLE>
+<LINK REV="made" HREF="mailto:ActivePerl@ActiveState.com">
+</HEAD>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#1F00FF" alink="#FF0000"  vlink="#9900DD">
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">
+<FONT SIZE=-1>NAME</FONT></A></LI>
+	<LI><A HREF="#synopsis">
+<FONT SIZE=-1>SYNOPSIS</FONT></A></LI>
+	<LI><A HREF="#function descriptions">
+<FONT SIZE=-1>FUNCTION</FONT> 
+<FONT SIZE=-1>DESCRIPTIONS</FONT></A></LI>
+	<UL>
+
+		<LI><A HREF="#clonemontageinfo">CloneMontageInfo</A></LI>
+		<LI><A HREF="#destroymontageinfo">DestroyMontageInfo</A></LI>
+		<LI><A HREF="#getmontageinfo">GetMontageInfo</A></LI>
+		<LI><A HREF="#montageimages">MontageImages</A></LI>
+	</UL>
+
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">
+<FONT SIZE=-1>NAME</FONT></A></H1>
+<P>montage - Methods to Create a Montage.</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">
+<FONT SIZE=-1>SYNOPSIS</FONT></A></H1>
+<P>MontageInfo * <STRONG>CloneMontageInfo</STRONG>( const ImageInfo *image_info, const MontageInfo *montage_info );</P>
+<P>void  <STRONG>DestroyMontageInfo</STRONG>( MontageInfo *montage_info );</P>
+<P>void  <STRONG>GetMontageInfo</STRONG>( const ImageInfo *image_info, MontageInfo *montage_info );</P>
+<P>Image * <STRONG>MontageImages</STRONG>( Image *image, const MontageInfo *montage_info, ExceptionInfo *exception );</P>
+<P>
+<HR>
+<H1><A NAME="function descriptions">
+<FONT SIZE=-1>FUNCTION</FONT> 
+<FONT SIZE=-1>DESCRIPTIONS</FONT></A></H1>
+<P>
+<H2><A NAME="clonemontageinfo">CloneMontageInfo</A></H2>
+<P>Method CloneMontageInfo makes a duplicate of the given montage info, or if montage info is 
+<FONT SIZE=-1>NULL,</FONT> a new one.</P>
+<P>The format of the CloneMontageInfo method is:</P>
+<blockquote><A HREF="types/MontageInfo.html">MontageInfo</A> *CloneMontageInfo ( const <A HREF="types/ImageInfo.html">ImageInfo</A> *image_info, const <A HREF="types/MontageInfo.html">MontageInfo</A> *montage_info ); </blockquote><P>
+<FONT SIZE=-1>A</FONT> description of each parameter follows:</P>
+<DL><DL>
+<p><dt><STRONG><A NAME="item_o_clone_info%3A">clone_info:</A></STRONG><BR>
+<DD>
+Method CloneMontageInfo returns a duplicate of the given annotate info, or if annotate info is 
+<FONT SIZE=-1>NULL</FONT> a new one.
+<P></P>
+<p><dt><STRONG><A NAME="item_o_image_info%3A">image_info:</A></STRONG><BR>
+<DD>
+a structure of type ImageInfo.
+<P></P>
+<p><dt><STRONG><A NAME="item_o_montage_info%3A">montage_info:</A></STRONG><BR>
+<DD>
+a structure of type MontageInfo.
+<P></P></DL></DL>
+<P>
+<H2><A NAME="destroymontageinfo">DestroyMontageInfo</A></H2>
+<P>Method DestroyMontageInfo deallocates memory associated with an MontageInfo structure.</P>
+<P>The format of the DestroyMontageInfo method is:</P>
+<blockquote>void DestroyMontageInfo ( <A HREF="types/MontageInfo.html">MontageInfo</A> *montage_info ); </blockquote><P>
+<FONT SIZE=-1>A</FONT> description of each parameter follows:</P>
+<DL><DL>
+<p><dt><STRONG>montage_info:</STRONG><BR>
+<DD>
+Specifies a pointer to an MontageInfo structure.
+<P></P></DL></DL>
+<P>
+<H2><A NAME="getmontageinfo">GetMontageInfo</A></H2>
+<P>Method GetMontageInfo initializes the MontageInfo structure.</P>
+<P>The format of the GetMontageInfo method is:</P>
+<blockquote>void GetMontageInfo ( const <A HREF="types/ImageInfo.html">ImageInfo</A> *image_info, <A HREF="types/MontageInfo.html">MontageInfo</A> *montage_info ); </blockquote><P>
+<FONT SIZE=-1>A</FONT> description of each parameter follows:</P>
+<DL><DL>
+<p><dt><STRONG>image_info:</STRONG><BR>
+<DD>
+a structure of type ImageInfo.
+<P></P>
+<p><dt><STRONG>montage_info:</STRONG><BR>
+<DD>
+Specifies a pointer to a MontageInfo structure.
+<P></P></DL></DL>
+<P>
+<H2><A NAME="montageimages">MontageImages</A></H2>
+<P>Method MontageImages creates a composite image by combining several separate images.</P>
+<P>The format of the MontageImages method is:</P>
+<blockquote><A HREF="types/Image.html">Image</A> *MontageImages ( <A HREF="types/Image.html">Image</A> *image, const <A HREF="types/MontageInfo.html">MontageInfo</A> *montage_info, <A HREF="types/ExceptionInfo.html">ExceptionInfo</A> *exception ); </blockquote><P>
+<FONT SIZE=-1>A</FONT> description of each parameter follows:</P>
+<DL><DL>
+<p><dt><STRONG><A NAME="item_o_image%3A">image:</A></STRONG><BR>
+<DD>
+Specifies a pointer to an array of Image structures.
+<P></P>
+<p><dt><STRONG>montage_info:</STRONG><BR>
+<DD>
+Specifies a pointer to a MontageInfo structure.
+<P></P>
+<p><dt><STRONG><A NAME="item_o_exception%3A">exception:</A></STRONG><BR>
+<DD>
+Return any errors or warnings in this structure.
+</DL></DL>
+
+</BODY>
+
+</HTML>

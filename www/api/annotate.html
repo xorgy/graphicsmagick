@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>annotate - Methods to Annotate an Image</TITLE>
+<LINK REV="made" HREF="mailto:ActivePerl@ActiveState.com">
+</HEAD>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#1F00FF" alink="#FF0000"  vlink="#9900DD">
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">
+<FONT SIZE=-1>NAME</FONT></A></LI>
+	<LI><A HREF="#synopsis">
+<FONT SIZE=-1>SYNOPSIS</FONT></A></LI>
+	<LI><A HREF="#function descriptions">
+<FONT SIZE=-1>FUNCTION</FONT> 
+<FONT SIZE=-1>DESCRIPTIONS</FONT></A></LI>
+	<UL>
+
+		<LI><A HREF="#annotateimage">AnnotateImage</A></LI>
+		<LI><A HREF="#gettypemetrics">GetTypeMetrics</A></LI>
+	</UL>
+
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">
+<FONT SIZE=-1>NAME</FONT></A></H1>
+<P>annotate - Methods to Annotate an Image</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">
+<FONT SIZE=-1>SYNOPSIS</FONT></A></H1>
+<P>unsigned int  <STRONG>AnnotateImage</STRONG>( Image *image, DrawInfo *draw_info );</P>
+<P>unsigned int  <STRONG>GetTypeMetrics</STRONG>( Image *image, const DrawInfo *draw_info, TypeMetric metrics );</P>
+<P>
+<HR>
+<H1><A NAME="function descriptions">
+<FONT SIZE=-1>FUNCTION</FONT> 
+<FONT SIZE=-1>DESCRIPTIONS</FONT></A></H1>
+<P>
+<H2><A NAME="annotateimage">AnnotateImage</A></H2>
+<P>Method AnnotateImage annotates an image with text.  Optionally the annotation can include the image filename, type, width, height, or scene</P>
+<P>The format of the AnnotateImage method is:</P>
+<blockquote>unsigned int AnnotateImage ( <A HREF="types/Image.html">Image</A> *image, <A HREF="types/DrawInfo.html">DrawInfo</A> *draw_info ); </blockquote><P>
+<FONT SIZE=-1>A</FONT> description of each parameter follows:</P>
+<DL><DL>
+<p><dt><STRONG><A NAME="item_o_status%3A">status:</A></STRONG><BR>
+<DD>
+Method AnnotateImage returns True if the image is annotated otherwise False.
+<P></P>
+<p><dt><STRONG><A NAME="item_o_image%3A">image:</A></STRONG><BR>
+<DD>
+The image.
+<P></P>
+<p><dt><STRONG><A NAME="item_o_draw_info%3A">draw_info:</A></STRONG><BR>
+<DD>
+The draw info.
+<P></P></DL></DL>
+<P>
+<H2><A NAME="gettypemetrics">GetTypeMetrics</A></H2>
+<P>Method GetTypeMetrics returns the following information for the specified font and text:</P>
+<DL><DL>
+<p><dt><STRONG><A NAME="item_o">o</A></STRONG><BR>
+<DD>
+character width, expressed in integer pixels o character height, expressed in integer pixels o ascent, expressed in 26.6 fixed point pixels o descent, expressed in 26.6 fixed point pixels o text width, expressed in 26.6 fixed point pixels o text height, expressed in 26.6 fixed point pixels o maximum horizontal advance, expressed in 26.6 fixed point pixels
+<P></P></DL></DL>
+<P>The format of the GetTypeMetrics method is:</P>
+<blockquote>unsigned int GetTypeMetrics ( <A HREF="types/Image.html">Image</A> *image, const <A HREF="types/DrawInfo.html">DrawInfo</A> *draw_info, TypeMetric metrics ); </blockquote><P>
+<FONT SIZE=-1>A</FONT> description of each parameter follows:</P>
+<DL><DL>
+<p><dt><STRONG>status:</STRONG><BR>
+<DD>
+Method GetTypeMetrics returns True if the metrics are available otherwise False.
+<P></P>
+<p><dt><STRONG>image:</STRONG><BR>
+<DD>
+The image.
+<P></P>
+<p><dt><STRONG>draw_info:</STRONG><BR>
+<DD>
+The draw info.
+<P></P>
+<p><dt><STRONG><A NAME="item_o_metrics%3A">metrics:</A></STRONG><BR>
+<DD>
+Method GetTypeMetrics returns the font metrics.
+</DL></DL>
+
+</BODY>
+
+</HTML>
