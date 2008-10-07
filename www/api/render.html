@@ -1,0 +1,187 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>render - Low-level methods to draw on an image</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:bfriesen@freddy.simplesystems.org" />
+</head>
+
+<body style="background-color: white">
+
+<P><a name="__index__"></a></P>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#function_descriptions">FUNCTION DESCRIPTIONS</a></li>
+	<ul>
+
+		<li><a href="#clonedrawinfo">CloneDrawInfo</a></li>
+		<li><a href="#destroydrawinfo">DestroyDrawInfo</a></li>
+		<li><a href="#drawaffineimage">DrawAffineImage</a></li>
+		<li><a href="#drawclippath">DrawClipPath</a></li>
+		<li><a href="#drawimage">DrawImage</a></li>
+		<li><a href="#drawpatternpath">DrawPatternPath</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<P>
+</P>
+<h1><a name="name">NAME</a></h1>
+<P>render - Low-level methods to draw on an image</P>
+<P>
+</P>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<P>DrawInfo * <strong>CloneDrawInfo</strong>( const ImageInfo *image_info, const DrawInfo *draw_info );</P>
+<P>void  <strong>DestroyDrawInfo</strong>( DrawInfo *draw_info );</P>
+<P>unsigned int  <strong>DrawAffineImage</strong>( Image *image, const Image *composite, const AffineMatrix *affine );</P>
+<P>unsigned int  <strong>DrawClipPath</strong>( Image *image, const DrawInfo *draw_info, const char *name );</P>
+<P>unsigned int  <strong>DrawImage</strong>( Image *image, const DrawInfo *draw_info );</P>
+<P>unsigned int  <strong>DrawPatternPath</strong>( Image *image, const DrawInfo *draw_info, const char *name, Image ** pattern );</P>
+<P>
+</P>
+<hr />
+<h1><a name="function_descriptions">FUNCTION DESCRIPTIONS</a></h1>
+<P>
+</P>
+<h2><a name="clonedrawinfo">CloneDrawInfo</a></h2>
+<blockquote>CloneDrawInfo() makes a copy of the given draw info structure. If NULL is specified, a new image info structure is created initialized to default values. </blockquote><P>The format of the CloneDrawInfo method is:</P>
+<blockquote><A HREF="types.html#DrawInfo">DrawInfo</A> *CloneDrawInfo ( const <A HREF="types.html#ImageInfo">ImageInfo</A> *image_info, const <A HREF="types.html#DrawInfo">DrawInfo</A> *draw_info ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_image_info_3a">image_info:</a></strong>
+
+<DD>
+<P>The image info.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_draw_info_3a">draw_info:</a></strong>
+
+<DD>
+<P>The draw info.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="destroydrawinfo">DestroyDrawInfo</a></h2>
+<blockquote>DestroyDrawInfo() deallocates memory associated with an <A HREF="types.html#DrawInfo">DrawInfo</A> structure. </blockquote><P>The format of the DestroyDrawInfo method is:</P>
+<blockquote>void DestroyDrawInfo ( <A HREF="types.html#DrawInfo">DrawInfo</A> *draw_info ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>draw_info:</strong>
+
+<DD>
+<P>The draw info.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="drawaffineimage">DrawAffineImage</a></h2>
+<blockquote>DrawAffineImage() composites the source over the destination image as dictated by the affine transform. </blockquote><P>The format of the DrawAffineImage method is:</P>
+<blockquote>unsigned int DrawAffineImage ( <A HREF="types.html#Image">Image</A> *image, const <A HREF="types.html#Image">Image</A> *composite, const <A HREF="types.html#AffineMatrix">AffineMatrix</A> *affine ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_image_3a">image:</a></strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The composite image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_affine_3a">affine:</a></strong>
+
+<DD>
+<P>The affine transform.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="drawclippath">DrawClipPath</a></h2>
+<blockquote>DrawClipPath() draws the clip path on the image mask. </blockquote><P>The format of the DrawClipPath method is:</P>
+<blockquote>unsigned int DrawClipPath ( <A HREF="types.html#Image">Image</A> *image, const <A HREF="types.html#DrawInfo">DrawInfo</A> *draw_info, const char *name ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong>draw_info:</strong>
+
+<DD>
+<P>The draw info.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_name_3a">name:</a></strong>
+
+<DD>
+<P>The name of the clip path.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="drawimage">DrawImage</a></h2>
+<blockquote>Use DrawImage() to draw a graphic primitive on your image. The primitive may be represented as a string or filename. Precede the filename with an "at" sign ( @ ) and the contents of the file are drawn on the image. You can affect how text is drawn by setting one or more members of the draw info structure. </blockquote><P>Note that this is a legacy interface.  Authors of new code should consider using the Draw* methods defined by magick/draw.h since they are better documented and less error prone.</P>
+<P>The format of the DrawImage method is:</P>
+<blockquote>unsigned int DrawImage ( <A HREF="types.html#Image">Image</A> *image, const <A HREF="types.html#DrawInfo">DrawInfo</A> *draw_info ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong>draw_info:</strong>
+
+<DD>
+<P>The draw info.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="drawpatternpath">DrawPatternPath</a></h2>
+<blockquote>DrawPatternPath() draws a pattern. </blockquote><P>The format of the DrawPatternPath method is:</P>
+<blockquote>unsigned int DrawPatternPath ( <A HREF="types.html#Image">Image</A> *image, const <A HREF="types.html#DrawInfo">DrawInfo</A> *draw_info, const char *name, <A HREF="types.html#Image">Image</A> **pattern ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong>draw_info:</strong>
+
+<DD>
+<P>The draw info.</P>
+</dd>
+</li>
+<dt><strong>name:</strong>
+
+<DD>
+<P>The pattern name.</P>
+</dd>
+</li>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</dl>
+
+</body>
+
+</html>

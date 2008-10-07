@@ -1,0 +1,1633 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=us-ascii">
+	<title>GraphicsMagick GM Utility</title>
+	<style type=text/css>
+	<!--
+		@page { size: 8.5in 11in }
+		TD P { color: #000000; font-family: "Verdana", "Arial", "Helvetica", sans-serif; font-size: 14pt }
+		P { color: #000000; font-family: "Verdana", "Arial", "Helvetica", sans-serif; font-size: 14pt }
+		A:link { color: #0085c0 }
+		A:visited { color: #800080 }
+	-->
+	</style>
+
+</head>
+<body LANG="en-US" TEXT="#000000" LINK="#0085c0" VLINK="#800080" BGCOLOR="#ffffff">
+<a name="top"></a>
+<table border=0 cellpadding=10 cellspacing=0 style="margin-top:-17px" width="100%"><tr><td>
+<br>&nbsp;<br>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME="montage"></a>gm montage
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME=mont-top"></a>NAME
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<p>
+montage - create a composite image by combining several separate images
+<br>&nbsp;<br>
+</td></tr></table>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME=mont-contents"></a>Contents
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<dl>
+<dt>
+<a href="#mont-syno">Synopsis</a>
+</dt>
+<dt>
+<a href="#mont-desc">Description</a>
+</dt>
+<dt>
+<a href="#mont-exam">Examples</a>
+</dt>
+<dt>
+<a href="#mont-opti">Options</a>
+</dt>
+<dt>
+<a href="#mont-xres">X Resources</a>
+</dt>
+<dt>
+<a href="#mont-envi">Environment</a>
+</dt>
+<dt>
+<a href="#mont-file">Configuration File</a>
+</dt>
+<dt>
+<a href="#mont-ackn">Acknowledgement</a>
+</dt>
+<dt>
+<a href="#mont-auth">Authors</a>
+</dt>
+<dt>
+<a href="#mont-copy">Copyright</a>
+</dt>
+</dl>
+</td></tr></table>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME=mont-syno"></a>Synopsis
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<p>
+<strong>montage</strong> <strong>[</strong> <em>options</em> <strong>...]</strong> <em>file</em> <strong>[ [</strong>
+<em>options</em> <strong>...]</strong> <em>file</em> <strong>...]</strong> <em>output_file</em>
+<br>&nbsp;<br>
+</td></tr></table>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME=mont-desc"></a>Description
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<p>
+<strong>montage</strong> creates a composite image by combining several separate
+images. The images are tiled on the composite image with the name of the
+image optionally appearing just below the individual tile.
+<p>
+The composite image is constructed in the following manner. First, each
+image specified on the command line, except for the last, is scaled to
+fit the maximum tile size. The maximum tile size by default is 120x120.
+It can be modified with the <strong>-geometry</strong> command line argument or X
+resource. See
+<strong><a href="#mont-opti">Options</a></strong>
+for more information on command line arguments. See
+<strong>X(1)</strong> for more information on X resources.
+Note that the maximum tile size need not be a square.
+<p>
+Next the composite image is initialized with the color specified by the
+<strong>-background</strong>
+command line argument or X resource. The width and height of the composite
+image is determined by the title specified, the maximum tile size, the
+number of tiles per row, the tile border width and height, the image border
+width, and the label height. The number of tiles per row specifies how
+many images are to appear in each row of the composite image. The default
+is to have 5 tiles in each row and 4 tiles in each column of the composite.
+A specific value is specified with <strong>-tile</strong>. The tile border width
+and height, and the image border width defaults to the value of the X resource
+<strong>-borderwidth</strong>. It can be changed with the <strong>-borderwidth</strong> or
+<strong>-geometry</strong> command line argument or X resource. The label height
+is determined by the font you specify with the <strong>-font</strong> command line
+argument or X resource. If you do not specify a font, a font is chosen
+that allows the name of the image to fit the maximum width of a tiled area.
+The label colors is determined by the <strong>-background</strong> and <strong>-fill</strong>
+command line argument or X resource. Note, that if the background and pen
+colors are the same, labels will not appear.
+<p>
+Initially, the composite image title is placed at the top if one is specified
+(refer to <strong>-fill</strong>). Next, each image is set onto the composite image,
+surrounded by its border color, with its name centered just below it. The
+individual images are left-justified within the width of the tiled area.
+The order of the images is the same as they appear on the command line
+unless the images have a scene keyword. If a scene number is specified
+in each image, then the images are tiled onto the composite in the order
+of their scene number. Finally, the last argument on the command line is
+the name assigned to the composite image. By default, the image is written
+in the <strong>MIFF</strong> format and can be viewed or printed with
+<a href="display.html"><em>display(1)</em></a>.
+<br>&nbsp;<br>
+<p>
+Note, that if the number of tiles exceeds the default number of 20 (5 per
+row, 4 per column), more than one composite image is created. To ensure
+a single image is produced, use <strong>-tile</strong> to increase the number of
+tiles to meet or exceed the number of input images.
+<p>
+Finally, to create one or more empty spaces in the sequence of tiles, use
+the <strong>"NULL:"</strong> image format.
+<p>
+Note, a composite MIFF image displayed to an X server with
+<strong>display</strong>
+behaves differently than other images. You can think of the composite as
+a visual image directory. Choose a particular tile of the composite and
+press a button to display it. See <strong>display(1)</strong> and <strong>miff(5)</strong>
+</td></tr></table>
+     <p>
+<i><a href="#top">Back to Contents</a></i> 
+&nbsp;</p>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME=mont-exam"></a>Examples
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<p>
+To create a montage of a cockatoo, a parrot, and a hummingbird and write
+it to a file called birds, use:
+<pre>
+    gm montage cockatoo.miff parrot.miff hummingbird.miff birds.miff
+</pre>
+<p>
+To tile several bird images so that they are at most 256 pixels in width
+and 192 pixels in height, surrounded by a red border, and separated by
+10 pixels of background color, use:
+<pre>
+    gm montage -geometry 256x192+10+10 -bordercolor red birds.* montage.miff
+</pre>
+<p>
+To create an unlabeled parrot image, 640 by 480 pixels, and surrounded
+by a border of black, use:
+<pre>
+    gm montage -geometry 640x480 -bordercolor black -label "" parrot.miff
+bird.miff
+</pre>
+<p>
+To create an image of an eagle with a textured background, use:
+<pre>
+    gm montage -texture bumps.jpg eagle.jpg eagle.png
+</pre>
+<p>
+To join several GIF images together without any extraneous graphics (e.g.
+no label, no shadowing, no surrounding tile frame), use:
+<pre>
+    gm montage +frame +shadow +label -tile 5x1 -geometry 50x50+0+0 *.png joined.png
+</pre>
+</td></tr></table>
+     <p>
+<i><a href="#top">Back to Contents</a></i> 
+&nbsp;</p>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME=mont-opti"></a>Options
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<p>
+Any option you specify on the command line remains in effect for the group
+of images following it, until the group is terminated by the appearance of
+any option or <strong>-noop</strong>.  For example, to make a montage of three images,
+the first with 32 colors, the second with an unlimited number of colors, and
+the third with only 16 colors, use:
+<br>&nbsp;<br>
+<pre>
+     gm montage -colors 32 cockatoo.1 -noop cockatoo.2 -colors 16 cockatoo.3
+cockatoos.miff
+</pre>
+<p>
+For a more detailed description of each option, see
+Options, above.
+<a href="GraphicsMagick.html"><em>GraphicsMagick(1)</em></a>.
+<br>&nbsp;<br>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-adjoin">-adjoin</a>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>join images into a single multi-image file</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-authenticate">-authenticate</a> <i>&lt;string&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>decrypt image with this password</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-background">-background</a> <i>&lt;color&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>the background color</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-blue-primary">-blue-primary</a> <i>&lt;x&gt;,&lt;y&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>blue chromaticity primary point</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-blur">-blur</a> <i>&lt;radius&gt;</i>{<i>x&lt;sigma&gt;</i>}<i></i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>blur the image with a Gaussian operator</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-bordercolor">-bordercolor</a> <i>&lt;color&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>the border color</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    -borderwidth <i>&lt;geometry&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>the border width</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-chop">-chop</a> <i>&lt;width&gt;x&lt;height&gt;</i>{<i>+-</i>}<i>&lt;x&gt;</i>{<i>+-</i>}<i>&lt;y&gt;</i>{<i>%</i>}<i></i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>remove pixels from the interior of an image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-colors">-colors</a> <i>&lt;value&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>preferred number of colors in the image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-colorspace">-colorspace</a> <i>&lt;value&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>the type of colorspace</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-comment">-comment</a> <i>&lt;string&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>annotate an image with a comment</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-compose">-compose</a> <i>&lt;operator&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>the type of image composition</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-compress">-compress</a> <i>&lt;type&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>the type of image compression</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-crop">-crop</a> <i>&lt;width&gt;x&lt;height&gt;</i>{<i>+-</i>}<i>&lt;x&gt;</i>{<i>+-</i>}<i>&lt;y&gt;</i>{<i>%</i>}<i></i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>preferred size and location of the cropped image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    -debug <i>&lt;events&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>enable debug printout</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-define">-define</a> <i>&lt;key&gt;</i>{<i>=&lt;value&gt;</i>}<i>,...</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>add coder/decoder specific options</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-density">-density</a> <i>&lt;width&gt;x&lt;height&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>horizontal and vertical resolution in pixels of the image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-depth">-depth</a> <i>&lt;value&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>depth of the image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-display">-display</a> <i>&lt;host:display[.screen]&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>specifies the X server to contact</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-dispose">-dispose</a> <i>&lt;method&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>GIF disposal method</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-dither">-dither</a>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>apply Floyd/Steinberg error diffusion to the image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-draw">-draw</a> <i>&lt;string&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>annotate an image with one or more graphic primitives</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-encoding">-encoding</a> <i>&lt;type&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>specify the text encoding</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-endian">-endian</a> <i>&lt;type&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>specify endianness (MSB or LSB) of output image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-fill">-fill</a> <i>&lt;color&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>color to use when filling a graphic primitive</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-filter">-filter</a> <i>&lt;type&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>use this type of filter when resizing an image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-font">-font</a> <i>&lt;name&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>use this font when annotating the image with text</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-frame">-frame</a> <i>&lt;width&gt;x&lt;height&gt;+&lt;outer bevel width&gt;+&lt;inner bevel width&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>surround the image with an ornamental border</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-gamma">-gamma</a> <i>&lt;value&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>level of gamma correction</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-geometry">-geometry</a> <i>&lt;width&gt;x&lt;height&gt;</i>{<i>+-</i>}<i>&lt;x&gt;</i>{<i>+-</i>}<i>&lt;y&gt;</i>{<i>%</i>}<i></i>{<i>@</i>}<i> </i>{<i>!</i>}<i></i>{<i>&lt;</i>}<i></i>{<i>&gt;</i>}<i></i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>preferred size and location of the Image window.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-gravity">-gravity</a> <i>&lt;type&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>direction primitive  gravitates to when annotating the image.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-green-primary">-green-primary</a> <i>&lt;x&gt;,&lt;y&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>green chromaticity primary point</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    -help
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>print usage instructions</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-interlace">-interlace</a> <i>&lt;type&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>the type of interlacing scheme</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-label">-label</a> <i>&lt;name&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>assign a label to an image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-limit">-limit</a> <i>&lt;type&gt; &lt;value&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Disk, File, Map, Memory, or Pixels resource limit</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-log">-log</a> <i>&lt;string&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Specify format for debug log</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-matte">-matte</a>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>store matte channel if the image has one</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-mattecolor">-mattecolor</a> <i>&lt;color&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>specify the color to be used with the <strong>-frame</strong> option</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    -mode <i>&lt;value&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>mode of operation</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    -monitor
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>show progress indication</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    -monochrome
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>transform the image to black and white</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-noop">-noop</a>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>NOOP (no option)</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-page">-page</a> <i>&lt;width&gt;x&lt;height&gt;</i>{<i>+-</i>}<i>&lt;x&gt;</i>{<i>+-</i>}<i>&lt;y&gt;</i>{<i>%</i>}<i></i>{<i>!</i>}<i></i>{<i>&lt;</i>}<i></i>{<i>&gt;</i>}<i></i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>size and location of an image canvas</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-pen">-pen</a> <i>&lt;color&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>(This option has been replaced by the -fill option)</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    -pointsize <i>&lt;value&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>pointsize of the PostScript, OPTION1, or TrueType font</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-quality">-quality</a> <i>&lt;value&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>JPEG/MIFF/PNG/TIFF compression level</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-red-primary">-red-primary</a> <i>&lt;x&gt;,&lt;y&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>red chromaticity primary point</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-render">-render</a>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>render vector operations</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-resize">-resize</a> <i>&lt;width&gt;x&lt;height&gt;</i>{<i>%</i>}<i></i>{<i>@</i>}<i></i>{<i>!</i>}<i></i>{<i>&lt;</i>}<i></i>{<i>&gt;</i>}<i></i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>resize an image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-rotate">-rotate</a> <i>&lt;degrees&gt;</i>{<i>&lt;</i>}<i></i>{<i>&gt;</i>}<i></i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>apply Paeth image rotation to the image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-sampling-factor">-sampling-factor</a> <i>&lt;horizontal_factor&gt;x&lt;vertical_factor&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>chroma subsampling factors</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-scenes">-scenes</a> <i>&lt;value-value&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>range of image scene numbers to read</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    -shadow <i>&lt;radius&gt;</i>{<i>x&lt;sigma&gt;</i>}<i></i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>shadow the montage</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-sharpen">-sharpen</a> <i>&lt;radius&gt;</i>{<i>x&lt;sigma&gt;</i>}<i></i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>sharpen the image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-size">-size</a> <i>&lt;width&gt;x&lt;height&gt;</i>{<i>+offset</i>}<i></i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>width and height of the image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-stroke">-stroke</a> <i>&lt;color&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>color to use when stroking a graphic primitive</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-strokewidth">-strokewidth</a> <i>&lt;value&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>set the stroke width</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    -texture <i>&lt;filename&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>name of texture to tile onto the image background</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    -tile <i>&lt;geometry&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>layout of images [<em>montage</em>]</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-title">-title</a> <i>&lt;string&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>assign title to displayed image [<em>animate, display, montage</em>]</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-transparent">-transparent</a> <i>&lt;color&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>make this color transparent within the image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-treedepth">-treedepth</a> <i>&lt;value&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>tree depth for the color reduction algorithm</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-trim">-trim</a>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>trim an image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-type">-type</a> <i>&lt;type&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>the image type</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-verbose">-verbose</a>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>print detailed information about the image</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-version">-version</a>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>print GraphicsMagick version string</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    <a href="GraphicsMagick.html#details-white-point">-white-point</a> <i>&lt;x&gt;,&lt;y&gt;</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>chromaticity white point</td></tr></table>
+<p>
+For a more detailed description of each option, see
+Options, above.
+<a href="GraphicsMagick.html"><em>GraphicsMagick(1)</em></a>.
+<br>&nbsp;<br>
+</td></tr></table>
+     <p>
+<i><a href="#top">Back to Contents</a></i> 
+&nbsp;</p>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME=mont-xres"></a>X Resources
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<p>
+<strong>Montage</strong> options can appear on the command line or in your X resource
+file. Options on the command line supersede values specified in your X
+resource file. See <strong>X(1)</strong> for more information on X resources.
+<p>
+All <strong>montage</strong> options have a corresponding X resource. In addition,
+<strong>montage</strong>
+uses the following X resources:
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    background <i>(class Background)</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>background color</td></tr></table>
+<p>
+Specifies the preferred color to use for the composite image background.
+The default is #ccc.
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    borderColor <i>(class BorderColor)</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>border color</td></tr></table>
+<p>
+Specifies the preferred color to use for the composite image border. The
+default is #ccc.
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    borderWidth <i>(class BorderWidth)</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>border width</td></tr></table>
+<p>
+Specifies the width in pixels of the composite image border. The default
+is 2.
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    font <i>(class Font)</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>font to use</td></tr></table>
+<p>
+Specifies the name of the preferred font to use when displaying text within
+the composite image. The default is 9x15, fixed, or 5x8 determined by the
+composite image size.
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    matteColor <i>(class MatteColor)</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>color of the frame</td></tr></table>
+<p>
+Specify the color of an image frame. A 3D effect is achieved by using highlight
+and shadow colors derived from this color. The default value is #697B8F.
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    pen <i>(class Pen)</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>text color</td></tr></table>
+<p>
+Specifies the preferred color to use for text within the composite image.
+The default is black.
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    title <i>(class Title)</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>composite image title</td></tr></table>
+<p>
+This resource specifies the title to be placed at the top of the composite
+image. The default is not to place a title at the top of the composite
+image.
+</td></tr></table>
+     <p>
+<i><a href="#top">Back to Contents</a></i> 
+&nbsp;</p>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME=mont-envi"></a>Environment
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    COLUMNS
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Output screen width. Used when formatting text for the screen. Many
+Unix systems keep this shell variable up to date, but it may need to be
+explicitly exported in order for GraphicsMagick to see it.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    DISPLAY
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>X11 display ID (host, display number, and screen in the form
+hostname:display.screen).</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    HOME
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Location of user's home directory. GraphicsMagick searches for
+configuration files in $HOME/.magick if the directory exists. See
+<strong>MAGICK_CODER_MODULE_PATH</strong>, <strong>MAGICK_CONFIGURE_PATH</strong>, and
+<strong>MAGICK_FILTER_MODULE_PATH</strong> if more flexibility is needed.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_CODER_MODULE_PATH
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Search path to use when searching for image format coder modules.
+This path allows the user to arbitrarily extend the image formats
+supported by GraphicsMagick by adding loadable modules to an arbitrary
+location rather than copying them into the GraphicsMagick installation
+directory. The formatting of the search path is similar to operating
+system search paths (i.e. colon delimited for Unix, and semi-colon
+delimited for Microsoft Windows). This user specified search path is used
+before trying the default search path.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_CONFIGURE_PATH
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Search path to use when searching for configuration (.mgk) files.
+The formatting of the search path is similar to operating system search
+paths (i.e. colon delimited for Unix, and semi-colon delimited for
+Microsoft Windows). This user specified search path is used before trying
+the default search path.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_DEBUG
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Debug options (see <strong>-debug</strong> for details)</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_FILTER_MODULE_PATH
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Search path to use when searching for filter process modules
+(invoked via <strong>-process</strong>). This path allows the user to arbitrarily
+extend GraphicsMagick's image processing functionality by adding loadable
+modules to an arbitrary location rather than copying them into the
+GraphicsMagick installation directory. The formatting of the search path
+is similar to operating system search paths (i.e. colon delimited for
+Unix, and semi-colon delimited for Microsoft Windows). This user
+specified search path is used before trying the default search path.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_HOME
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Path to top of GraphicsMagick installation directory. Only observed
+by "uninstalled" builds of GraphicsMagick which do not have their location
+hard-coded or set by an installer.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_MMAP_READ
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>If <strong>MAGICK_MMAP_READ</strong> is set to <strong>TRUE</strong>, GraphicsMagick
+will attempt to memory-map the input file for reading. This usually
+substantially improves read performance if the file has recently been
+read. However, testing shows that performance may be reduced for files
+accessed for the first time via a network since some operating systems
+failed to do read-ahead over network mounts for memory mapped files.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_MMAP_WRITE
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>If <strong>MAGICK_MMAP_WRITE</strong> is set to <strong>TRUE</strong>, GraphicsMagick
+will attempt to memory-map the output file for writing. This is an
+experimental feature (which is currently broken). Write performance is
+usually somewhat worse when using this approach rather than the default
+one.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_IOBUF_SIZE
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>The amount of I/O buffering (in bytes) to use when reading and
+writing encoded files. The default is 16384, which is observed to work
+well for many cases. The best value for a local filesystem is usually the
+the native filesystem block size (e.g. 4096, 8192, or even 131,072 for
+ZFS) in order to minimize the number of physical disk I/O operations.
+I/O performance to files accessed over a network may benefit
+significantly by tuning this option. Larger values are not necessarily
+better (they may be slower!), and there is rarely any benefit from using
+values larger than 32768. Use convert's <strong>-verbose</strong> option in order
+to evaluate read and write rates in pixels per second while keeping in
+mind that the operating system will try to cache files in RAM.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_LIMIT_DISK
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Maximum amount of disk space allowed for use by the pixel cache.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_LIMIT_FILES
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Maximum number of open files.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_LIMIT_MAP
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Maximum size of a memory map.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_LIMIT_MEMORY
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Maximum amount of memory to allocate from the heap.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    MAGICK_TMPDIR
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>Path to directory where GraphicsMagick should write temporary
+files. The default is to use the system default, or the location set by
+<strong>TMPDIR</strong>.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    TMPDIR
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>For POSIX-compatible systems (Unix-compatible), the path to the
+directory where all applications should write temporary files.
+Overridden by <strong>MAGICK_TMPDIR</strong> if it is set.</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    TMP <i>or TEMP</i>
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>For Microsoft Windows, the path to the directory where applications
+should write temporary files. Overridden by <strong>MAGICK_TMPDIR</strong> if it
+is set.</td></tr></table>
+</td></tr></table>
+     <p>
+<i><a href="#top">Back to Contents</a></i> 
+&nbsp;</p>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME="mont-file"></a>Configuration Files
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<p>GraphicsMagick uses a number of XML format configuration files:
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    colors.mgk
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>colors configuration file</td></tr></table>
+<pre>
+  &lt;?xml version="1.0"?&gt;
+  &lt;colormap&gt;
+    &lt;color name="AliceBlue" red="240" green="248" blue="255"
+           compliance="SVG, X11, XPM" /&gt;
+  &lt;/colormap&gt;
+</pre>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    delegates.mgk
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>delegates configuration file</td></tr></table>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    log.mgk
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>logging configuration file</td></tr></table>
+<pre>
+  &lt;?xml version="1.0"?&gt;
+  &lt;magicklog&gt;
+    &lt;log events="None" /&gt;
+    &lt;log output="stdout" /&gt;
+    &lt;log filename="Magick-%d.log" /&gt;
+    &lt;log generations="3" /&gt;
+    &lt;log limit="2000" /&gt;
+    &lt;log format="%t %r %u %p %m/%f/%l/%d:\n  %e"  /&gt;
+  &lt;/magicklog&gt;
+</pre>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    magic.mgk
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>file header magic test configuration file</td></tr></table>
+<pre>
+  &lt;?xml version="1.0"?&gt;
+  &lt;magicmap&gt;
+    &lt;magic name="AVI" offset="0" target="RIFF" /&gt;
+  &lt;/magicmap&gt;
+</pre>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    modules.mgk
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>loadable modules configuration file</td></tr></table>
+<pre>
+  &lt;?xml version="1.0"?&gt;
+  &lt;modulemap&gt;
+    &lt;module magick="8BIM" name="META" /&gt;
+  &lt;/modulemap&gt;
+</pre>
+<table BORDER=0 WIDTH="94%">
+<tr>
+<td width="3%"><br></td> 
+<td ALIGN=LEFT BGCOLOR="#9EBAC6">
+<img SRC="../images/right_triangle_option.png"
+ALT=">" BORDER=0 height=14
+width=15><b><font face="Helvetica, Arial"
+><font color="#FFFFFF"><font size="+1">
+    type.mgk
+</font></font></font></b></td></tr></table>
+<table width="90%" border="0" cellspacing="0"              cellpadding="8">              <tr><td width="6%"><br></td><td>master type (fonts) configuration file</td></tr></table>
+<pre>
+  &lt;?xml version="1.0"?&gt;
+  &lt;typemap&gt;
+    &lt;<strong></strong>include file="type-windows.mgk" /&gt;
+    &lt;type
+      name="AvantGarde-Book"
+      fullname="AvantGarde Book"
+      family="AvantGarde"
+      foundry="URW"
+      weight="400"
+      style="normal"
+      stretch="normal"
+      format="type1"
+      metrics="/usr/local/share/ghostscript/fonts/a010013l.afm"
+      glyphs="/usr/local/share/ghostscript/fonts/a010013l.pfb"
+    /&gt;
+  &lt;/typemap&gt;
+</pre>
+</td></tr></table>
+     <p>
+<i><a href="#top">Back to Contents</a></i> 
+&nbsp;</p>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME=mont-ackn"></a>Acknowledgements
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<p>
+The <strong>MIT X Consortium</strong> for making network transparent graphics a reality.
+<br>&nbsp;<br>
+<p>
+<em>Michael Halle</em>, <strong>Spatial Imaging Group at MIT</strong>, for the initial
+implementation of Alan Paeth's image rotation algorithm.
+<br>&nbsp;<br>
+<p>
+<em>David Pensak</em>, <strong>E. I. du Pont de Nemours and Company</strong>, for
+providing a computing environment that made this program possible.
+<br>&nbsp;<br>
+<p>
+<em>Peder Langlo</em>, <strong>Hewlett Packard</strong>, Norway, made hundreds of suggestions
+and bug reports. Without Peder, this software would not be nearly
+as useful as it is today.
+<p>
+<em>Rod Bogart</em> and <em>John W. Peterson</em>, <strong>University of Utah</strong>.
+Image compositing is loosely based on rlecomp of the Utah Raster Toolkit.
+<p>
+<em>Paul Heckbert</em>, <strong>Carnegie Mellon University</strong>. Image resizing is
+based on his Zoom program.
+<p>
+<em>Paul Raveling</em>, <strong>USC Information Sciences Institute</strong>. The
+spatial subdivision color reduction algorithm is based on his Img software.
+</td></tr></table>
+     <p>
+<i><a href="#top">Back to Contents</a></i> 
+&nbsp;</p>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME="auth"></a>Authors
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<p>
+<em>
+John Cristy,<br>
+Bob Friesenhahn,<br>
+Glenn Randers-Pehrson,<br>
+William Radcliff,<br>
+Leonard Rosenthol.
+</em>
+<br>&nbsp;<br>
+</td></tr></table>
+     <p>
+<i><a href="#top">Back to Contents</a></i> 
+&nbsp;</p>
+<table BORDER=0 WIDTH="100%"> 
+<tr> 
+<td ALIGN=LEFT bgcolor="#52799E"><img 
+SRC="../images/right_triangle.png"  ALT=">" BORDER=0 
+height=14 width=15><b><font face="Helvetica, Arial"><font 
+color="#FFFFFF"><font size="+1">
+<a NAME="copy"></a>Copyright
+</font></font></font></b></td></tr></table>
+<table width="94%" border="0" cellspacing="0" cellpadding="8">
+<tr><td width="3%"><br></td><td>
+<p>
+<strong>Copyright (C) 2002, 2003 GraphicsMagick Group, an organization
+dedicated to making software imaging solutions freely available.</strong>
+<p>
+<strong>Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files
+("GraphicsMagick"), to deal in GraphicsMagick without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of GraphicsMagick,
+and to permit persons to whom GraphicsMagick is furnished to do so,
+subject to the following conditions:</strong>
+<p>
+<strong>The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of GraphicsMagick.</strong>
+<p>
+<strong>The software is provided "as is", without warranty of any kind,
+express or implied, including but not limited to the warranties of
+merchantability, fitness for a particular purpose and noninfringement.
+In no event shall GraphicsMagick Group be liable for any claim, damages
+or other liability, whether in an action of contract, tort or otherwise,
+arising from, out of or in connection with GraphicsMagick or the use or
+other dealings in GraphicsMagick.</strong>
+<p>
+<strong>Except as contained in this notice, the name of the GraphicsMagick
+Group shall not be used in advertising or otherwise to promote the sale,
+use or other dealings in GraphicsMagick without prior written
+authorization from the GraphicsMagick Group.</strong>
+<p>
+<strong>Additional copyrights and licenses apply to this software. You should
+have received a copy of Copyright.txt with this package, which describes
+additional copyrights and licenses which apply to this software;
+otherwise see http://www.graphicsmagick.org/www/Copyright.html.</strong>
+</td></tr></table>
+     <p>
+<i><a href="#top">Back to Contents</a></i> 
+&nbsp;</p>
+<HR>
+
+[<a href="../index.html">Home</a>] [<a href="utilities.html">Utilities Index</a>]
+<BR>
+<p align=center <a href="Copyright.html">Copyright &#169; GraphicsMagick Group 2002, 2003, 2004</a></p></td>
+</tr></table>
+</body></html>

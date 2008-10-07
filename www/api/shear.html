@@ -1,0 +1,139 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>shear - Rotate image, shear image, or apply a 2D affine transformation</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:bfriesen@freddy.simplesystems.org" />
+</head>
+
+<body style="background-color: white">
+
+<P><a name="__index__"></a></P>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#function_descriptions">FUNCTION DESCRIPTIONS</a></li>
+	<ul>
+
+		<li><a href="#affinetransformimage">AffineTransformImage</a></li>
+		<li><a href="#rotateimage">RotateImage</a></li>
+		<li><a href="#shearimage">ShearImage</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<P>
+</P>
+<h1><a name="name">NAME</a></h1>
+<P>shear - Rotate image, shear image, or apply a 2D affine transformation</P>
+<P>
+</P>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<P>Image * <strong>AffineTransformImage</strong>( const Image *image, AffineMatrix *affine, ExceptionInfo *exception );</P>
+<P>Image * <strong>RotateImage</strong>( const Image *image, const double degrees, ExceptionInfo *exception );</P>
+<P>Image * <strong>ShearImage</strong>( const Image *image, const double x_shear, const double y_shear, ExceptionInfo *exception );</P>
+<P>
+</P>
+<hr />
+<h1><a name="function_descriptions">FUNCTION DESCRIPTIONS</a></h1>
+<P>
+</P>
+<h2><a name="affinetransformimage">AffineTransformImage</a></h2>
+<blockquote>AffineTransformImage() transforms an image as dictated by the affine matrix. It allocates the memory necessary for the new <A HREF="types.html#Image">Image</A> structure and returns a pointer to the new image. </blockquote><P>The format of the AffineTransformImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *AffineTransformImage ( const <A HREF="types.html#Image">Image</A> *image, <A HREF="types.html#AffineMatrix">AffineMatrix</A> *affine, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_image_3a">image:</a></strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_affine_3a">affine:</a></strong>
+
+<DD>
+<P>The affine transform.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_exception_3a">exception:</a></strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="rotateimage">RotateImage</a></h2>
+<P>Method RotateImage creates a new image that is a rotated copy of an existing one.  Positive angles rotate counter-clockwise (right-hand rule), while negative angles rotate clockwise.  Rotated images are usually larger than the originals and have 'empty' triangular corners.  X axis.  Empty triangles left over from shearing the image are filled with the color specified by the image background_color.  RotateImage allocates the memory necessary for the new Image structure and returns a pointer to the new image.</P>
+<P>Method RotateImage is based on the paper ``A Fast Algorithm for General Raster Rotatation'' by Alan W.  Paeth.  RotateImage is adapted from a similar method based on the Paeth paper written by Michael Halle of the Spatial Imaging Group, MIT Media Lab.</P>
+<P>The format of the RotateImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *RotateImage ( const <A HREF="types.html#Image">Image</A> *image, const double degrees, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows.</P>
+<dl>
+<dt><strong><a name="item_o_status_3a">status:</a></strong>
+
+<DD>
+<P>Method RotateImage returns a pointer to the image after rotating.  A null image is returned if there is a memory shortage.</P>
+</dd>
+</li>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image; returned from ReadImage.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_degrees_3a">degrees:</a></strong>
+
+<DD>
+<P>Specifies the number of degrees to rotate the image.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="shearimage">ShearImage</a></h2>
+<P>Method ShearImage creates a new image that is a shear_image copy of an existing one.  Shearing slides one edge of an image along the X or Y axis, creating a parallelogram.  An X direction shear slides an edge along the X axis, while a Y direction shear slides an edge along the Y axis.  The amount of the shear is controlled by a shear angle.  For X direction shears, x_shear is measured relative to the Y axis, and similarly, for Y direction shears y_shear is measured relative to the X axis.  Empty triangles left over from shearing the image are filled with the color defined by the pixel at location (0,0). ShearImage allocates the memory necessary for the new Image structure and returns a pointer to the new image.</P>
+<P>Method ShearImage is based on the paper ``A Fast Algorithm for General Raster Rotatation'' by Alan W.  Paeth.</P>
+<P>The format of the ShearImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *ShearImage ( const <A HREF="types.html#Image">Image</A> *image, const double x_shear, const double y_shear, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows.</P>
+<dl>
+<dt><strong>status:</strong>
+
+<DD>
+<P>Method ShearImage returns a pointer to the image after rotating.  A null image is returned if there is a memory shortage.</P>
+</dd>
+</li>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image; returned from ReadImage.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_x_shear_2c_y_shear_3a">x_shear, y_shear:</a></strong>
+
+<DD>
+<P>Specifies the number of degrees to shear the image.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</dl>
+
+</body>
+
+</html>

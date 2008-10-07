@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>monitor - Progress monitor support</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:bfriesen@freddy.simplesystems.org" />
+</head>
+
+<body style="background-color: white">
+
+<P><a name="__index__"></a></P>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#function_descriptions">FUNCTION DESCRIPTIONS</a></li>
+	<ul>
+
+		<li><a href="#magickmonitor">MagickMonitor</a></li>
+		<li><a href="#setmonitorhandler">SetMonitorHandler</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<P>
+</P>
+<h1><a name="name">NAME</a></h1>
+<P>monitor - Progress monitor support</P>
+<P>
+</P>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<P>unsigned int  <strong>MagickMonitor</strong>( const char *text, const magick_int64_t quantum, const magick_uint64_t span, ExceptionInfo *exception );</P>
+<P>MonitorHandler  <strong>SetMonitorHandler</strong>( MonitorHandler handler );</P>
+<P>
+</P>
+<hr />
+<h1><a name="function_descriptions">FUNCTION DESCRIPTIONS</a></h1>
+<P>
+</P>
+<h2><a name="magickmonitor">MagickMonitor</a></h2>
+<blockquote>MagickMonitor() calls the monitor handler method with a text string that describes the task and a measure of completion. The method returns True on success otherwise False if an error is encountered, e.g. if there was a user interrupt. </blockquote><P>The format of the MagickMonitor method is:</P>
+<blockquote>unsigned int MagickMonitor ( const char *text, const magick_int64_t quantum, const magick_uint64_t span, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_quantum_3a">quantum:</a></strong>
+
+<DD>
+<P>The position relative to the span parameter which represents how much progress has been made toward completing a task.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_span_3a">span:</a></strong>
+
+<DD>
+<P>The span relative to completing a task.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_exception_3a">exception:</a></strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="setmonitorhandler">SetMonitorHandler</a></h2>
+<blockquote>SetMonitorHandler() sets the monitor handler to the specified method and returns the previous monitor handler. </blockquote><P>The format of the SetMonitorHandler method is:</P>
+<blockquote><A HREF="types.html#MonitorHandler">MonitorHandler</A> SetMonitorHandler ( <A HREF="types.html#MonitorHandler">MonitorHandler</A> handler ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_handler_3a">handler:</a></strong>
+
+<DD>
+<P>Specifies a pointer to a method to handle monitors.</P>
+</dd>
+</dl>
+
+</body>
+
+</html>

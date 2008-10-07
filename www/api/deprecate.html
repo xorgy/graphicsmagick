@@ -1,0 +1,174 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>deprecate - Methods which should no longer be used</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:bfriesen@freddy.simplesystems.org" />
+</head>
+
+<body style="background-color: white">
+
+<P><a name="__index__"></a></P>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#function_descriptions">FUNCTION DESCRIPTIONS</a></li>
+	<ul>
+
+		<li><a href="#acquirememory">AcquireMemory</a></li>
+		<li><a href="#clonememory">CloneMemory</a></li>
+		<li><a href="#liberatememory">LiberateMemory</a></li>
+		<li><a href="#popimagepixels">PopImagePixels</a></li>
+		<li><a href="#pushimagepixels">PushImagePixels</a></li>
+		<li><a href="#reacquirememory">ReacquireMemory</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<P>
+</P>
+<h1><a name="name">NAME</a></h1>
+<P>deprecate - Methods which should no longer be used</P>
+<P>
+</P>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<P>void * <strong>AcquireMemory</strong>( const size_t size );</P>
+<P>void * <strong>CloneMemory</strong>( void *destination, const void *source, const size_t size );</P>
+<P>void  <strong>LiberateMemory</strong>( void ** memory );</P>
+<P>unsigned int  <strong>PopImagePixels</strong>( const Image *, const QuantumType quantum, unsigned char *destination );</P>
+<P>unsigned int  <strong>PushImagePixels</strong>( Image *image, const QuantumType quantum_type, const unsigned char *source );</P>
+<P>void  <strong>ReacquireMemory</strong>( void ** memory, const size_t size );</P>
+<P>
+</P>
+<hr />
+<h1><a name="function_descriptions">FUNCTION DESCRIPTIONS</a></h1>
+<P>
+</P>
+<h2><a name="acquirememory">AcquireMemory</a></h2>
+<blockquote>AcquireMemory() returns a pointer to a block of memory of at least size bytes suitably aligned for any use. NULL is returned if insufficient memory is available or the requested size is zero. </blockquote><P>The format of the AcquireMemory method is:</P>
+<blockquote>void *AcquireMemory ( const size_t size ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_size_3a">size:</a></strong>
+
+<DD>
+<P>The size of the memory in bytes to allocate.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="clonememory">CloneMemory</a></h2>
+<blockquote>CloneMemory() copies size bytes from memory area source to the destination. Copying between objects that overlap will take place correctly. It returns destination. </blockquote><P>The format of the CloneMemory method is:</P>
+<blockquote>void *CloneMemory ( void *destination, const void *source, const size_t size ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>size:</strong>
+
+<DD>
+<P>The size of the memory in bytes to allocate.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="liberatememory">LiberateMemory</a></h2>
+<blockquote>LiberateMemory() frees memory that has already been allocated, and NULLs the pointer to it. </blockquote><P>The format of the LiberateMemory method is:</P>
+<blockquote>void LiberateMemory ( void **memory ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_memory_3a">memory:</a></strong>
+
+<DD>
+<P>A pointer to a block of memory to free for reuse.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="popimagepixels">PopImagePixels</a></h2>
+<blockquote>PopImagePixels() transfers one or more pixel components from the image pixel cache to a user supplied buffer. True is returned if the pixels are successfully transferred, otherwise False. </blockquote><P>The format of the PopImagePixels method is:</P>
+<blockquote>unsigned int PopImagePixels ( const <A HREF="types.html#Image">Image</A> *, const <A HREF="types.html#QuantumType">QuantumType</A> quantum, unsigned char *destination ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_status_3a">status:</a></strong>
+
+<DD>
+<P>Method PopImagePixels returns True if the pixels are successfully transferred, otherwise False.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_image_3a">image:</a></strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_quantum_3a">quantum:</a></strong>
+
+<DD>
+<P>Declare which pixel components to transfer (RGB, RGBA, etc).</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_destination_3a">destination:</a></strong>
+
+<DD>
+<P>The components are transferred to this buffer.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="pushimagepixels">PushImagePixels</a></h2>
+<blockquote>PushImagePixels() transfers one or more pixel components from a user supplied buffer into the image pixel cache of an image. It returns True if the pixels are successfully transferred, otherwise False. </blockquote><P>The format of the PushImagePixels method is:</P>
+<blockquote>unsigned int PushImagePixels ( <A HREF="types.html#Image">Image</A> *image, const <A HREF="types.html#QuantumType">QuantumType</A> quantum_type, const unsigned char *source ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>status:</strong>
+
+<DD>
+<P>Method PushImagePixels returns True if the pixels are successfully transferred, otherwise False.</P>
+</dd>
+</li>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_quantum_type_3a">quantum_type:</a></strong>
+
+<DD>
+<P>Declare which pixel components to transfer (red, green, blue, opacity, RGB, or RGBA).</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_source_3a">source:</a></strong>
+
+<DD>
+<P>The pixel components are transferred from this buffer.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="reacquirememory">ReacquireMemory</a></h2>
+<blockquote>ReacquireMemory() changes the size of the memory and returns a pointer to the ( possibly moved ) block. The contents will be unchanged up to the lesser of the new and old sizes. </blockquote><P>The format of the ReacquireMemory method is:</P>
+<blockquote>void ReacquireMemory ( void **memory, const size_t size ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>memory:</strong>
+
+<DD>
+<P>A pointer to a memory allocation.  On return the pointer may change but the contents of the original allocation will not.</P>
+</dd>
+</li>
+<dt><strong>size:</strong>
+
+<DD>
+<P>The new size of the allocated memory.</P>
+</dd>
+</dl>
+
+</body>
+
+</html>

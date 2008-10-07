@@ -1,0 +1,127 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>montage - Create a thumbnail image mosaic</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:bfriesen@freddy.simplesystems.org" />
+</head>
+
+<body style="background-color: white">
+
+<P><a name="__index__"></a></P>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#function_descriptions">FUNCTION DESCRIPTIONS</a></li>
+	<ul>
+
+		<li><a href="#clonemontageinfo">CloneMontageInfo</a></li>
+		<li><a href="#destroymontageinfo">DestroyMontageInfo</a></li>
+		<li><a href="#getmontageinfo">GetMontageInfo</a></li>
+		<li><a href="#montageimages">MontageImages</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<P>
+</P>
+<h1><a name="name">NAME</a></h1>
+<P>montage - Create a thumbnail image mosaic</P>
+<P>
+</P>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<P>MontageInfo * <strong>CloneMontageInfo</strong>( const ImageInfo *image_info, const MontageInfo *montage_info );</P>
+<P>void  <strong>DestroyMontageInfo</strong>( MontageInfo *montage_info );</P>
+<P>void  <strong>GetMontageInfo</strong>( const ImageInfo *image_info, MontageInfo *montage_info );</P>
+<P>Image * <strong>MontageImages</strong>( const Image *images, const MontageInfo *montage_info, ExceptionInfo *exception );</P>
+<P>
+</P>
+<hr />
+<h1><a name="function_descriptions">FUNCTION DESCRIPTIONS</a></h1>
+<P>
+</P>
+<h2><a name="clonemontageinfo">CloneMontageInfo</a></h2>
+<blockquote>CloneMontageInfo() makes a copy of the given montage info structure. If NULL is specified, a new image info structure is created initialized to default values. </blockquote><P>The format of the CloneMontageInfo method is:</P>
+<blockquote><A HREF="types.html#MontageInfo">MontageInfo</A> *CloneMontageInfo ( const <A HREF="types.html#ImageInfo">ImageInfo</A> *image_info, const <A HREF="types.html#MontageInfo">MontageInfo</A> *montage_info ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_image_info_3a">image_info:</a></strong>
+
+<DD>
+<P>The image info.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_montage_info_3a">montage_info:</a></strong>
+
+<DD>
+<P>The montage info.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="destroymontageinfo">DestroyMontageInfo</a></h2>
+<blockquote>DestroyMontageInfo() deallocates memory associated with montage_info. </blockquote><P>The format of the DestroyMontageInfo method is:</P>
+<blockquote>void DestroyMontageInfo ( <A HREF="types.html#MontageInfo">MontageInfo</A> *montage_info ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>montage_info:</strong>
+
+<DD>
+<P>Specifies a pointer to an MontageInfo structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="getmontageinfo">GetMontageInfo</a></h2>
+<blockquote>GetMontageInfo() initializes montage_info to default values. </blockquote><P>The format of the GetMontageInfo method is:</P>
+<blockquote>void GetMontageInfo ( const <A HREF="types.html#ImageInfo">ImageInfo</A> *image_info, <A HREF="types.html#MontageInfo">MontageInfo</A> *montage_info ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image_info:</strong>
+
+<DD>
+<P>a structure of type ImageInfo.</P>
+</dd>
+</li>
+<dt><strong>montage_info:</strong>
+
+<DD>
+<P>Specifies a pointer to a MontageInfo structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="montageimages">MontageImages</a></h2>
+<P><code>Montageimages()</code> is a layout manager that lets you tile one or more thumbnails across an image canvas.</P>
+<P>The format of the MontageImages method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *MontageImages ( const <A HREF="types.html#Image">Image</A> *images, const <A HREF="types.html#MontageInfo">MontageInfo</A> *montage_info, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_images_3a">images:</a></strong>
+
+<DD>
+<P>Specifies a pointer to an array of Image structures.</P>
+</dd>
+</li>
+<dt><strong>montage_info:</strong>
+
+<DD>
+<P>Specifies a pointer to a MontageInfo structure.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_exception_3a">exception:</a></strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</dl>
+
+</body>
+
+</html>

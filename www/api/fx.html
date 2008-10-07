@@ -1,0 +1,371 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>fx - Image special effects methods</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:bfriesen@freddy.simplesystems.org" />
+</head>
+
+<body style="background-color: white">
+
+<P><a name="__index__"></a></P>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#function_descriptions">FUNCTION DESCRIPTIONS</a></li>
+	<ul>
+
+		<li><a href="#charcoalimage">CharcoalImage</a></li>
+		<li><a href="#colorizeimage">ColorizeImage</a></li>
+		<li><a href="#convolveimage">ConvolveImage</a></li>
+		<li><a href="#implodeimage">ImplodeImage</a></li>
+		<li><a href="#morphimages">MorphImages</a></li>
+		<li><a href="#oilpaintimage">OilPaintImage</a></li>
+		<li><a href="#solarizeimage">SolarizeImage</a></li>
+		<li><a href="#steganoimage">SteganoImage</a></li>
+		<li><a href="#stereoimage">StereoImage</a></li>
+		<li><a href="#swirlimage">SwirlImage</a></li>
+		<li><a href="#waveimage">WaveImage</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<P>
+</P>
+<h1><a name="name">NAME</a></h1>
+<P>fx - Image special effects methods</P>
+<P>
+</P>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<P>Image * <strong>CharcoalImage</strong>( const Image *image, const double radius, const double sigma, ExceptionInfo *exception );</P>
+<P>Image * <strong>ColorizeImage</strong>( const Image *image, const char *opacity, const PixelPacket target, ExceptionInfo *exception );</P>
+<P>Image * <strong>ConvolveImage</strong>( const Image *image, const unsigned int order, const double *kernel, ExceptionInfo *exception );</P>
+<P>Image * <strong>ImplodeImage</strong>( const Image *image, const double amount, ExceptionInfo *exception );</P>
+<P>Image * <strong>MorphImages</strong>( const Image *image, const unsigned long number_frames, ExceptionInfo *exception );</P>
+<P>Image * <strong>OilPaintImage</strong>( const Image *image, const double radius, ExceptionInfo *exception );</P>
+<P>unsigned int  <strong>SolarizeImage</strong>( Image *image, const double threshold );</P>
+<P>Image * <strong>SteganoImage</strong>( const Image *image, Image *watermark, ExceptionInfo *exception );</P>
+<P>Image * <strong>StereoImage</strong>( const Image *image, const Image *offset_image, ExceptionInfo *exception );</P>
+<P>Image * <strong>SwirlImage</strong>( const Image *image, double degrees, ExceptionInfo *exception );</P>
+<P>Image * <strong>WaveImage</strong>( const Image *image, const double amplitude, const double wave_length, ExceptionInfo *exception );</P>
+<P>
+</P>
+<hr />
+<h1><a name="function_descriptions">FUNCTION DESCRIPTIONS</a></h1>
+<P>
+</P>
+<h2><a name="charcoalimage">CharcoalImage</a></h2>
+<P>Method CharcoalImage creates a new image that is a copy of an existing one with the edge highlighted.  It allocates the memory necessary for the new Image structure and returns a pointer to the new image.</P>
+<P>The format of the CharcoalImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *CharcoalImage ( const <A HREF="types.html#Image">Image</A> *image, const double radius, const double sigma, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_charcoal_image_3a">charcoal_image:</a></strong>
+
+<DD>
+<P>Method CharcoalImage returns a pointer to the image after it is embossed.  A null image is returned if there is a memory shortage.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_image_3a">image:</a></strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_radius_3a">radius:</a></strong>
+
+<DD>
+<P>the radius of the pixel neighborhood.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_sigma_3a">sigma:</a></strong>
+
+<DD>
+<P>The standard deviation of the Gaussian, in pixels.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_exception_3a">exception:</a></strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="colorizeimage">ColorizeImage</a></h2>
+<blockquote>ColorizeImage() blends the fill color with each pixel in the image. A percentage blend is specified with opacity. Control the application of different color components by specifying a different percentage for </blockquote><P>The format of the ColorizeImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *ColorizeImage ( const <A HREF="types.html#Image">Image</A> *image, const char *opacity, const <A HREF="types.html#PixelPacket">PixelPacket</A> target, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_opacity_3a">opacity:</a></strong>
+
+<DD>
+<P>A character string indicating the level of opacity as a percentage.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_target_3a">target:</a></strong>
+
+<DD>
+<P>A color value.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="convolveimage">ConvolveImage</a></h2>
+<blockquote>ConvolveImage() applies a custom convolution kernel to the image. </blockquote><P>The format of the ConvolveImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *ConvolveImage ( const <A HREF="types.html#Image">Image</A> *image, const unsigned int order, const double *kernel, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_order_3a">order:</a></strong>
+
+<DD>
+<P>The number of columns and rows in the filter kernel.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_kernel_3a">kernel:</a></strong>
+
+<DD>
+<P>An array of double representing the convolution kernel.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="implodeimage">ImplodeImage</a></h2>
+<P>Method ImplodeImage creates a new image that is a copy of an existing one with the image pixels ``implode'' by the specified percentage.  It allocates the memory necessary for the new Image structure and returns a pointer to the new image.</P>
+<P>The format of the ImplodeImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *ImplodeImage ( const <A HREF="types.html#Image">Image</A> *image, const double amount, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_implode_image_3a">implode_image:</a></strong>
+
+<DD>
+<P>Method ImplodeImage returns a pointer to the image after it is implode.  A null image is returned if there is a memory shortage.</P>
+</dd>
+</li>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_amount_3a">amount:</a></strong>
+
+<DD>
+<P>Define the extent of the implosion.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="morphimages">MorphImages</a></h2>
+<blockquote>The MorphImages() method requires a minimum of two images. The first image is transformed into the second by a number of intervening images as specified by frames. </blockquote><P>The format of the MorphImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *MorphImages ( const <A HREF="types.html#Image">Image</A> *image, const unsigned long number_frames, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_number_frames_3a">number_frames:</a></strong>
+
+<DD>
+<P>Define the number of in-between image to generate.  The more in-between frames, the smoother the morph.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="oilpaintimage">OilPaintImage</a></h2>
+<blockquote>OilPaintImage() applies a special effect filter that simulates an oil painting. Each pixel is replaced by the most frequent color occurring in a circular region defined by radius. </blockquote><P>The format of the OilPaintImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *OilPaintImage ( const <A HREF="types.html#Image">Image</A> *image, const double radius, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong>radius:</strong>
+
+<DD>
+<P>The radius of the circular neighborhood.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="solarizeimage">SolarizeImage</a></h2>
+<blockquote>SolarizeImage() applies a special effect to the image, similar to the effect achieved in a photo darkroom by selectively exposing areas of photo sensitive paper to light. Threshold ranges from 0 to MaxRGB and is a measure of the extent of the solarization. False is returned if an error is encountered. </blockquote><P>The format of the SolarizeImage method is:</P>
+<blockquote>unsigned int SolarizeImage ( <A HREF="types.html#Image">Image</A> *image, const double threshold ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_threshold_3a">threshold:</a></strong>
+
+<DD>
+<P>Define the extent of the solarization.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="steganoimage">SteganoImage</a></h2>
+<blockquote>Use SteganoImage() to hide a digital watermark within the image. Recover the hidden watermark later to prove that the authenticity of an image. Offset defines the start position within the image to hide the watermark. </blockquote><P>The format of the SteganoImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *SteganoImage ( const <A HREF="types.html#Image">Image</A> *image, <A HREF="types.html#Image">Image</A> *watermark, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_watermark_3a">watermark:</a></strong>
+
+<DD>
+<P>The watermark image.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="stereoimage">StereoImage</a></h2>
+<blockquote>StereoImage() combines two images and produces a single image that is the composite of a left and right image of a stereo pair. Special red-green stereo glasses are required to view this effect. </blockquote><P>The format of the StereoImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *StereoImage ( const <A HREF="types.html#Image">Image</A> *image, const <A HREF="types.html#Image">Image</A> *offset_image, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_stereo_image_3a">stereo_image:</a></strong>
+
+<DD>
+<P>Method StereoImage returns a pointer to the stereo image.  A null image is returned if there is a memory shortage.</P>
+</dd>
+</li>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_offset_image_3a">offset_image:</a></strong>
+
+<DD>
+<P>Another image.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="swirlimage">SwirlImage</a></h2>
+<blockquote>SwirlImage() swirls the pixels about the center of the image, where degrees indicates the sweep of the arc through which each pixel is moved. You get a more dramatic effect as the degrees move from 1 to 360. </blockquote><P>The format of the SwirlImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *SwirlImage ( const <A HREF="types.html#Image">Image</A> *image, double degrees, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_degrees_3a">degrees:</a></strong>
+
+<DD>
+<P>Define the tightness of the swirling effect.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="waveimage">WaveImage</a></h2>
+<blockquote>The WaveImage() filter creates a "ripple" effect in the image by shifting the pixels vertically along a sine wave whose amplitude and wavelength is specified by the given parameters. </blockquote><P>The format of the WaveImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *WaveImage ( const <A HREF="types.html#Image">Image</A> *image, const double amplitude, const double wave_length, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_amplitude_2c_frequency_3a">amplitude, frequency:</a></strong>
+
+<DD>
+<P>Define the amplitude and wave_length of the sine wave.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</dl>
+
+</body>
+
+</html>

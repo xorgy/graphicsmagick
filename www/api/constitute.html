@@ -1,0 +1,401 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>constitute - Read or write an image</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:bfriesen@freddy.simplesystems.org" />
+</head>
+
+<body style="background-color: white">
+
+<P><a name="__index__"></a></P>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#function_descriptions">FUNCTION DESCRIPTIONS</a></li>
+	<ul>
+
+		<li><a href="#constituteimage">ConstituteImage</a></li>
+		<li><a href="#destroyconstitute">DestroyConstitute</a></li>
+		<li><a href="#dispatchimage">DispatchImage</a></li>
+		<li><a href="#exportimagepixelarea">ExportImagePixelArea</a></li>
+		<li><a href="#exportpixelareaoptionsinit">ExportPixelAreaOptionsInit</a></li>
+		<li><a href="#importimagepixelarea">ImportImagePixelArea</a></li>
+		<li><a href="#importpixelareaoptionsinit">ImportPixelAreaOptionsInit</a></li>
+		<li><a href="#pingimage">PingImage</a></li>
+		<li><a href="#readimage">ReadImage</a></li>
+		<li><a href="#readinlineimage">ReadInlineImage</a></li>
+		<li><a href="#writeimage">WriteImage</a></li>
+		<li><a href="#writeimages">WriteImages</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<P>
+</P>
+<h1><a name="name">NAME</a></h1>
+<P>constitute - Read or write an image</P>
+<P>
+</P>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<P>Image * <strong>ConstituteImage</strong>( const unsigned long width, const unsigned long height, const char *map, const StorageType type, const void *pixels, ExceptionInfo *exception );</P>
+<P><strong>DestroyConstitute</strong>( void );</P>
+<P>unsigned int  <strong>DispatchImage</strong>( const Image *image, const long x_offset, const long y_offset, const unsigned long columns, const unsigned long rows, const char *map, const StorageType type, void *pixels, ExceptionInfo *exception );</P>
+<P>MagickPassFail  <strong>ExportImagePixelArea</strong>( const Image *image, const QuantumType quantum_type, unsigned int quantum_size, unsigned char *destination, const ExportPixelAreaOptions *options, ExportPixelAreaInfo *export_info );</P>
+<P>void  <strong>ExportPixelAreaOptionsInit</strong>( ExportPixelAreaOptions *options );</P>
+<P>MagickPassFail  <strong>ImportImagePixelArea</strong>( Image *image, const QuantumType quantum_type, const unsigned int quantum_size, const unsigned char *source, const ImportPixelAreaOptions *options, ImportPixelAreaInfo *import_info );</P>
+<P>void  <strong>ImportPixelAreaOptionsInit</strong>( ImportPixelAreaOptions *options );</P>
+<P>Image * <strong>PingImage</strong>( const ImageInfo *image_info, ExceptionInfo *exception );</P>
+<P>Image * <strong>ReadImage</strong>( const ImageInfo *image_info, ExceptionInfo *exception );</P>
+<P>Image * <strong>ReadInlineImage</strong>( const ImageInfo *image_info, const char *content, ExceptionInfo *exception );</P>
+<P>unsigned int  <strong>WriteImage</strong>( const ImageInfo *image_info, Image *image );</P>
+<P>unsigned int  <strong>WriteImages</strong>( const ImageInfo *image_info, Image *image, const char *filename, ExceptionInfo *exception );</P>
+<P>
+</P>
+<hr />
+<h1><a name="function_descriptions">FUNCTION DESCRIPTIONS</a></h1>
+<P>
+</P>
+<h2><a name="constituteimage">ConstituteImage</a></h2>
+<blockquote>ConstituteImage() returns an <A HREF="types.html#Image">Image</A> corresponding to an image stored in a raw memory array format. The pixel data must be in scanline order top-to-bottom. The data can be unsigned char, unsigned short int, unsigned int, unsigned long, float, or double. Float and double require the pixels to be normalized to the range [0..1], otherwise the range is [0..MaxVal] where MaxVal is the maximum possible value for that type. </blockquote><P>Note that for most 32-bit architectures the size of an unsigned long is the same as unsigned int, but for 64-bit architectures observing the LP64 standard, an unsigned long is 64 bits, while an unsigned int remains 32 bits.  This should be considered when deciding if the data should be described as ``Integer'' or ``Long''.</P>
+<P>For example, to create a 640x480 image from unsigned red-green-blue character data, use</P>
+<blockquote>image=ConstituteImage ( 640, 480, "RGB", CharPixel, pixels, &exception );; </blockquote><P>The format of the Constitute method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *ConstituteImage ( const unsigned long width, const unsigned long height, const char *map, const <A HREF="types.html#StorageType">StorageType</A> type, const void *pixels, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_width_3a">width:</a></strong>
+
+<DD>
+<P>width in pixels of the image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_height_3a">height:</a></strong>
+
+<DD>
+<P>height in pixels of the image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_map_3a">map:</a></strong>
+
+<DD>
+<P>This string reflects the expected ordering of the pixel array.  It can be any combination or order of R = red, G = green, B = blue, A = alpha (same as Transparency), O = Opacity, T = Transparency, C = cyan, Y = yellow, M = magenta, K = black, or I = intensity (for grayscale). Specify ``P'' = pad, to skip over a quantum which is intentionally ignored.  Creation of an alpha channel for CMYK images is currently not supported.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_type_3a">type:</a></strong>
+
+<DD>
+<P>Define the data type of the pixels.  Float and double types are expected to be normalized [0..1] otherwise [0..MaxRGB]. Choose from these types: CharPixel, ShortPixel, IntegerPixel, LongPixel, FloatPixel, or DoublePixel.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_pixels_3a">pixels:</a></strong>
+
+<DD>
+<P>This array of values contain the pixel components as defined by map and type.  You must preallocate this array where the expected length varies depending on the values of width, height, map, and type.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_exception_3a">exception:</a></strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="destroyconstitute">DestroyConstitute</a></h2>
+<blockquote>DestroyConstitute() destroys the constitute environment. </blockquote><P>The format of the DestroyConstitute method is:</P>
+<blockquote>DestroyConstitute ( void ); </blockquote><P>
+</P>
+<h2><a name="dispatchimage">DispatchImage</a></h2>
+<blockquote>DispatchImage() extracts pixel data from an <A HREF="types.html#Image">Image</A> into a raw memory array. The pixel data is written in scanline order top-to-bottom using an arbitrary quantum order specified by 'map', and with quantum size specified by 'type'. </blockquote><P>The output array data may be unsigned char, unsigned short int, unsigned int, unsigned long, float, or double.  Float and double require the pixels to be normalized to the range [0..1], otherwise the range is [0..MaxVal] where MaxVal is the maximum possible value for that type.</P>
+<P>The method returns MagickPass on success or MagickFail if an error is encountered.</P>
+<P>Suppose we want want to extract the first scanline of a 640x480 image as character data in red-green-blue order:</P>
+<blockquote>DispatchImage ( image, 0, 0, 640, 1, "RGB", 0, pixels, exception );; </blockquote><P>The format of the DispatchImage method is:</P>
+<blockquote>unsigned int DispatchImage ( const <A HREF="types.html#Image">Image</A> *image, const long x_offset, const long y_offset, const unsigned long columns, const unsigned long rows, const char *map, const <A HREF="types.html#StorageType">StorageType</A> type, void *pixels, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_image_3a">image:</a></strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_x_offset_2c_y_offset_2c_columns_2c_rows_3a">x_offset, y_offset, columns, rows:</a></strong>
+
+<DD>
+<P>These values define the perimeter of a region of pixels you want to extract.</P>
+</dd>
+</li>
+<dt><strong>map:</strong>
+
+<DD>
+<P>This string reflects the expected ordering of the pixel array.  It can be any combination or order of R = red, G = green, B = blue, A = alpha (same as Transparency), O = Opacity, T = Transparency, C = cyan, Y = yellow, M = magenta, K = black, I = intensity (for grayscale). Specify ``P'' = pad, to output a pad quantum.  Pad quantums are zero-value.</P>
+</dd>
+</li>
+<dt><strong>type:</strong>
+
+<DD>
+<P>Define the data type of the pixels.  Float and double types are expected to be normalized [0..1] otherwise [0..MaxRGB]. Choose from these types: CharPixel, ShortPixel, IntegerPixel, LongPixel, FloatPixel, or DoublePixel.</P>
+</dd>
+</li>
+<dt><strong>pixels:</strong>
+
+<DD>
+<P>This array of values contain the pixel components as defined by map and type.  You must preallocate this array where the expected length varies depending on the values of width, height, map, and type.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="exportimagepixelarea">ExportImagePixelArea</a></h2>
+<blockquote>ExportImagePixelArea() transfers one or more pixel components from the image pixel cache to a user supplied buffer. By default, values are written in network ( big-endian ) byte/bit order. By setting the 'endian' member of ExportPixelAreaOptions, 16, 32 and 64-bit values may be output as little ( LSBEndian ), big ( MSBEndian ), or host native ( NativeEndian ) endian values. This function is quite powerful in that besides common native CPU type sizes, it can support any integer bit depth from 1 to 32 ( e.g. 13 ) as well as 32 and 64-bit float. </blockquote><P>MagickPass is returned if the pixels are successfully transferred, otherwise MagickFail.</P>
+<P>The format of the ExportImagePixelArea method is:</P>
+<blockquote>MagickPassFail ExportImagePixelArea ( const <A HREF="types.html#Image">Image</A> *image, const <A HREF="types.html#QuantumType">QuantumType</A> quantum_type, unsigned int quantum_size, unsigned char *destination, const ExportPixelAreaOptions *options, ExportPixelAreaInfo *export_info ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_status_3a">status:</a></strong>
+
+<DD>
+<P>Returns MagickPass if the pixels are successfully transferred, otherwise MagickFail.</P>
+</dd>
+</li>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_quantum_type_3a">quantum_type:</a></strong>
+
+<DD>
+<P>Declare which pixel components to transfer (AlphaQuantum, BlackQuantum, BlueQuantum, CMYKAQuantum, CMYKQuantum, CyanQuantum, GrayAlphaQuantum, GrayQuantum, GreenQuantum, IndexAlphaQuantum, IndexQuantum, MagentaQuantum, RGBAQuantum, RGBQuantum, RedQuantum, YellowQuantum)</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_quantum_size_3a">quantum_size:</a></strong>
+
+<DD>
+<P>Bits per quantum sample (range 1-32, and 64).</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_destination_3a">destination:</a></strong>
+
+<DD>
+<P>The components are transferred to this buffer.  The user is responsible for ensuring that the destination buffer is large enough.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_options_3a">options:</a></strong>
+
+<DD>
+<P>Additional options specific to quantum_type (may be NULL).</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_export_info__3a">export_info :</a></strong>
+
+<DD>
+<P>Populated with information regarding the pixels exported (may be NULL)</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="exportpixelareaoptionsinit">ExportPixelAreaOptionsInit</a></h2>
+<blockquote>ExportPixelAreaOptionsInit() initializes the options structure which is optionally passed to ExportPixelArea ( ) </blockquote><P>The format of the ExportPixelAreaOptionsInit method is:</P>
+<blockquote>void ExportPixelAreaOptionsInit ( ExportPixelAreaOptions *options ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>options:</strong>
+
+<DD>
+<P>Options structure to initialize.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="importimagepixelarea">ImportImagePixelArea</a></h2>
+<blockquote>ImportImagePixelArea() transfers one or more pixel components from a user supplied buffer into the image pixel cache of an image. By default, values are read in network ( big-endian ) byte/bit order. By setting the 'endian' member of ExportPixelAreaOptions, 16, 32 and 64-bit values may be output as little ( LSBEndian ), big ( MSBEndian ), or host native ( NativeEndian ) endian values. This function is quite powerful in that besides common native CPU type sizes, it can support any integer bit depth from 1 to 32 ( e.g. 13 ) as well as 32 and 64-bit float. </blockquote><P>MagickPass is returned if the pixels are successfully transferred, otherwise MagickFail.</P>
+<P>The format of the ImportImagePixelArea method is:</P>
+<blockquote>MagickPassFail ImportImagePixelArea ( <A HREF="types.html#Image">Image</A> *image, const <A HREF="types.html#QuantumType">QuantumType</A> quantum_type, const unsigned int quantum_size, const unsigned char *source, const ImportPixelAreaOptions *options, ImportPixelAreaInfo *import_info ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>status:</strong>
+
+<DD>
+<P>Method PushImagePixels returns MagickPass if the pixels are successfully transferred, otherwise MagickFail.</P>
+</dd>
+</li>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+<dt><strong>quantum_type:</strong>
+
+<DD>
+<P>Declare which pixel components to transfer (AlphaQuantum, BlackQuantum, BlueQuantum, CMYKAQuantum, CMYKQuantum, CyanQuantum, GrayAlphaQuantum, GrayQuantum, GreenQuantum, IndexAlphaQuantum, IndexQuantum, MagentaQuantum, RGBAQuantum, RGBQuantum, RedQuantum, YellowQuantum)</P>
+</dd>
+</li>
+<dt><strong>quantum_size:</strong>
+
+<DD>
+<P>Bits per quantum sample (range 1-32, and 64).</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_source_3a">source:</a></strong>
+
+<DD>
+<P>The pixel components are transferred from this buffer.</P>
+</dd>
+</li>
+<dt><strong>options:</strong>
+
+<DD>
+<P>Additional options specific to quantum_type (may be NULL).</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_import_info__3a">import_info :</a></strong>
+
+<DD>
+<P>Populated with information regarding the pixels imported (may be NULL)</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="importpixelareaoptionsinit">ImportPixelAreaOptionsInit</a></h2>
+<blockquote>ImportPixelAreaOptionsInit() initializes the options structure which is optionally passed to ImportPixelArea ( ) </blockquote><P>The format of the ImportPixelAreaOptionsInit method is:</P>
+<blockquote>void ImportPixelAreaOptionsInit ( ImportPixelAreaOptions *options ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>options:</strong>
+
+<DD>
+<P>Options structure to initialize.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="pingimage">PingImage</a></h2>
+<blockquote>PingImage() returns all the attributes of an image or image sequence except for the pixels. It is much faster and consumes far less memory than ReadImage ( ) . On failure, a NULL image is returned and exception describes the reason for the failure. </blockquote><P>The format of the PingImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *PingImage ( const <A HREF="types.html#ImageInfo">ImageInfo</A> *image_info, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong><a name="item_o_image_info_3a">image_info:</a></strong>
+
+<DD>
+<P>Ping the image defined by the file or filename members of this structure.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="readimage">ReadImage</a></h2>
+<blockquote>ReadImage() reads an image or image sequence from a file or file handle. The method returns a NULL if there is a memory shortage or if the image cannot be read. On failure, a NULL image is returned and exception describes the reason for the failure. </blockquote><P>The format of the ReadImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *ReadImage ( const <A HREF="types.html#ImageInfo">ImageInfo</A> *image_info, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image_info:</strong>
+
+<DD>
+<P>Read the image defined by the file or filename members of this structure.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="readinlineimage">ReadInlineImage</a></h2>
+<blockquote>ReadInlineImage() reads a Base64-encoded inline image or image sequence. The method returns a NULL if there is a memory shortage or if the image cannot be read. On failure, a NULL image is returned and exception describes the reason for the failure. </blockquote><P>The format of the ReadInlineImage method is:</P>
+<blockquote><A HREF="types.html#Image">Image</A> *ReadInlineImage ( const <A HREF="types.html#ImageInfo">ImageInfo</A> *image_info, const char *content, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image_info:</strong>
+
+<DD>
+<P>The image info.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_content_3a">content:</a></strong>
+
+<DD>
+<P>The image encoded in Base64.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="writeimage">WriteImage</a></h2>
+<P>Use <code>Write()</code> to write an image or an image sequence to a file or filehandle.  If writing to a file on disk, the name is defined by the filename member of the image structure.  <code>Write()</code> returns 0 is there is a memory shortage or if the image cannot be written.  Check the exception member of image to determine the cause for any failure.</P>
+<P>The format of the WriteImage method is:</P>
+<blockquote>unsigned int WriteImage ( const <A HREF="types.html#ImageInfo">ImageInfo</A> *image_info, <A HREF="types.html#Image">Image</A> *image ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image_info:</strong>
+
+<DD>
+<P>The image info.</P>
+</dd>
+</li>
+<dt><strong>image:</strong>
+
+<DD>
+<P>The image.</P>
+</dd>
+</li>
+</dl>
+<P>
+</P>
+<h2><a name="writeimages">WriteImages</a></h2>
+<blockquote>WriteImages() writes an image sequence. </blockquote><P>The format of the WriteImages method is:</P>
+<blockquote>unsigned int WriteImages ( const <A HREF="types.html#ImageInfo">ImageInfo</A> *image_info, <A HREF="types.html#Image">Image</A> *image, const char *filename, <A HREF="types.html#ExceptionInfo">ExceptionInfo</A> *exception ); </blockquote><P>A description of each parameter follows:</P>
+<dl>
+<dt><strong>image_info:</strong>
+
+<DD>
+<P>The image info.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_images_3a">images:</a></strong>
+
+<DD>
+<P>The image list.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_filename_3a">filename:</a></strong>
+
+<DD>
+<P>The image filename.</P>
+</dd>
+</li>
+<dt><strong>exception:</strong>
+
+<DD>
+<P>Return any errors or warnings in this structure.</P>
+</dd>
+</dl>
+
+</body>
+
+</html>

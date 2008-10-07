@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>segment - Segment and image with thresholding using the fuzzy c-means method</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:bfriesen@freddy.simplesystems.org" />
+</head>
+
+<body style="background-color: white">
+
+<P><a name="__index__"></a></P>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#function_descriptions">FUNCTION DESCRIPTIONS</a></li>
+	<ul>
+
+		<li><a href="#segmentimage">SegmentImage</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<P>
+</P>
+<h1><a name="name">NAME</a></h1>
+<P>segment - Segment and image with thresholding using the fuzzy c-means method</P>
+<P>
+</P>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<P>unsigned int  <strong>SegmentImage</strong>( Image *image, const ColorspaceType colorspace, const unsigned int verbose, const double cluster_threshold, const double smoothing_threshold );</P>
+<P>
+</P>
+<hr />
+<h1><a name="function_descriptions">FUNCTION DESCRIPTIONS</a></h1>
+<P>
+</P>
+<h2><a name="segmentimage">SegmentImage</a></h2>
+<P>Method SegmentImage segment an image by analyzing the histograms of the color components and identifying units that are homogeneous with the fuzzy c-means technique.</P>
+<P>Specify cluster threshold as the number of pixels in each cluster must exceed the the cluster threshold to be considered valid.  Smoothing threshold eliminates noise in the second derivative of the histogram.  As the value is increased, you can expect a smoother second derivative.  The default is 1.5.</P>
+<P>The format of the SegmentImage method is:</P>
+<blockquote>unsigned int SegmentImage ( <A HREF="types.html#Image">Image</A> *image, const <A HREF="types.html#ColorspaceType">ColorspaceType</A> colorspace, const unsigned int verbose, const double cluster_threshold, const double smoothing_threshold ); </blockquote><P>A description of each parameter follows.</P>
+<dl>
+<dt><strong><a name="item_o_colors_3a">colors:</a></strong>
+
+<DD>
+<P>The SegmentImage function returns this integer value.  It is the actual number of colors allocated in the colormap.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_image_3a">image:</a></strong>
+
+<DD>
+<P>Specifies a pointer to an Image structure; returned from ReadImage.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_colorspace_3a">colorspace:</a></strong>
+
+<DD>
+<P>An unsigned integer value that indicates the colorspace.  Empirical evidence suggests that distances in YUV or YIQ correspond to perceptual color differences more closely than do distances in RGB space.  The image is then returned to RGB colorspace after color reduction.</P>
+</dd>
+</li>
+<dt><strong><a name="item_o_verbose_3a">verbose:</a></strong>
+
+<DD>
+<P>A value greater than zero prints detailed information about the identified classes.</P>
+</dd>
+</dl>
+
+</body>
+
+</html>
