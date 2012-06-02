@@ -1,0 +1,37 @@
+#ifdef COPYRIGHT
+;
+; Copyright (C) 2003, 2008 GraphicsMagick Group
+;
+; This program is covered by multiple licenses, which are described in
+; Copyright.txt. You should have received a copy of Copyright.txt with this
+; package; otherwise see http://www.graphicsmagick.org/www/Copyright.html.
+;
+#endif
+
+; Compiler-dependent redistributable DLLs
+; Source: "..\bin\msvcr70.dll"; DestDir: {#MagickLibDirectory}; Flags: ignoreversion
+; Source: "..\bin\msvcp70.dll"; DestDir: {#MagickLibDirectory}; Flags: ignoreversion
+; Source: "..\bin\mfc70.dll"; DestDir: {#MagickLibDirectory}; Flags: ignoreversion
+
+; C runtime
+Source: "..\bin\msvcr90.dll"; DestDir: {#MagickLibDirectory}; Flags: ignoreversion
+
+; C++ standard runtime
+; Source: "..\bin\msvcp90.dll"; DestDir: {#MagickLibDirectory}; Flags: ignoreversion
+Source: "..\bin\Microsoft.VC90.CRT.manifest"; DestDir: {#MagickLibDirectory}; Flags: ignoreversion
+
+; OpenMP runtime
+Source: "..\bin\vcomp90.dll"; DestDir: {#MagickLibDirectory}; Flags: ignoreversion
+Source: "..\bin\Microsoft.VC90.OpenMP.manifest"; DestDir: {#MagickLibDirectory}; Flags: ignoreversion
+
+; MFC C++ runtime
+; Source: "..\bin\mfc90.dll";   DestDir: {#MagickLibDirectory}; Flags: ignoreversion
+; Source: "..\bin\Microsoft.VC90.MFC.manifest"; DestDir: {#MagickLibDirectory}; Flags: ignoreversion
+
+; DLLs
+Source: "..\bin\CORE_RL*.dll"; DestDir: {#MagickLibDirectory}; Flags: ignoreversion
+Source: "..\bin\IM_MOD_RL*.dll"; DestDir: {#MagickCodersDirectory}; Flags: ignoreversion
+Source: "..\bin\analyze.dll"; DestDir: {#MagickFiltersDirectory}; Flags: ignoreversion
+; X11 is no longer included in the Windows installer from the GraphicsMagick Group.
+;; Source: "..\bin\X11.dll"; DestDir: {#MagickLibDirectory}; Flags: ignoreversion
+;; Source: "..\bin\Xext.dll"; DestDir: {#MagickLibDirectory}; Flags: ignoreversion

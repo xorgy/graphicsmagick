@@ -1,0 +1,343 @@
+2012-06-02  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* PerlMagick/typemap: Add typemap file needed by Perl 5.16.
+	Resolves SourceForge issue 3531512 "PerlMagick does not build with
+	perl 5.16".
+
+2012-05-23  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/command.c (ConvertImageCommand): +repage does not require
+	an argument.  Resolves SourceForge issue 3529158 "+repage option
+	not respected with convert command".
+
+	* configure: Update to Autoconf 2.69.
+
+	* magick/effect.c (MotionBlurImage): Motion blur does scale so
+	remove DisableSlowOpenMP for it.
+
+	* magick/command.c (BenchmarkImageCommand): Remove parenthesis
+	from output, and change "iter/sec cpu" to "iter/cpu" to ease
+	parsing.
+
+	* magick/pixel_cache.c (GetPixelCacheInCore): Consider read-only
+	memory-mapped cache as being "in-core".  Otherwise MPC input files
+	are penalized.
+
+2012-05-16  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/api.h: Include <sys/types.h> on POSIX systems in order to
+	help assure that 'size_t' and 'ssize_t' are declared.
+
+2012-05-15  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/magick_config_api.h.in: Need to provide definitions for
+	'size_t' and 'ssize_t' in case the system headers lack these types
+	because the definition of MagickExtentImage() requires them.  This
+	should resolve PHP bug #62034 "gmagick does not compile".
+
+2012-05-14  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/pixel_iterator.c (GetRegionThreads): Don't thread region
+	if it is not memory-based.
+
+2012-05-09  Glenn Randers-Pehrson  <glennrp@simplesystems.org> 
+
+	* coders/png.c (ReadOnePNGImage): make transparent_color elements
+	unsigned long instead of unsigned short, so 65537 is actually out of
+	range as expected, and won't match any pixel if no tRNS chunk is
+	present.
+
+2012-05-09  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* coders/sfw.c (ReadSFWImage): Reader needs to be more robust
+	against corrupt or maligned headers.  Resolves SourceForge issue
+	"sfw file crash".
+
+2012-05-05  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* coders/pdf.c (WritePDFImage): Add file basename as the PDF
+	document title.  Resolves SourceForge bug ID 2835140
+	"GraphicsMagick fails to add title attribute to PDF output".
+
+	* coders/sfw.c (ReadSFWImage): Restore original filename and
+	format.
+
+	* PerlMagick/t/jpeg/read.t: Add a test for reading Seattle
+	FilmWorks format based on the sample image from
+	http://www.algonet.se/~cyren/sfw/.  Image was approved for
+	distribution in GraphicsMagick by Bengt Cyrén.
+
+	* magick/analyze.c (GetImageBoundingBox): Only apply opacity-based
+	bounding box detection if all three test points are non-opaque and
+	the same value.  Resolves SourceForge bug ID 3522804 "convert
+	-trim fails on 8-bit PNG that ImageMagick can trim".
+
+	* coders/sfw.c (ReadSFWImage): Fix variety of bugs related to
+	closing Image and blob at wrong points.  SFW reader is working
+	again.  Resolves SourceForge bug ID 523430 "sfw file open failed".
+
+2012-05-01 Fojtik Jaroslav  <JaFojtik@seznam.cz>
+
+	* coders/mat.c Animated movies inside 4D matrices are loaded now.
+
+2012-04-29  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/pixel_iterator.c: Limit the number of threads to use in
+	the loop rather than the total number of threads available.
+
+2012-04-28  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* Release GraphicsMagick 1.3.15
+
+2012-04-23  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/image.c (SetImageInfo): Remove automatic adjoin mode
+	support logic.
+	(AddDefinition): Fix use of uninitialized variable.
+
+2012-04-23  Glenn Randers-Pehrson  <glennrp@simplesystems.org> 
+
+	* doc/*.imdoc: some example commandlines in the documentation
+	were missing the leading "gm ".
+
+2012-04-22  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/blob.c (FormMultiPartFilename): No longer add a
+	printf-style scene formatting specification to filenames which do
+	not have one and no longer automatically operate in 'adjoin' mode
+	in such cases.  This is a BIG CHANGE for users who may have become
+	used to this automatic functionality.  The simple solution to
+	update existing scripts depending on this behavior is to change
+	any bare filenames to include a format specification similar to
+	"image-%d.jpg" and add +adjoin to the command line.  The reason
+	why this change is made is that the output files produced by any
+	given operation were unpredictable, and it was causing temporary
+	files to be leaked due to the renaming.
+
+2012-04-21  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* coders/bmp.c (WriteBMPImage): Enforce that image width and
+	height do not exceed BMP dimensions.  BMP dimensions are
+	represented by a signed type.  BMPv2 supports maximum dimensions
+	of 32k by 32k.
+
+2012-04-19  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* coders/info.c (WriteINFOImage): When driven by the 'convert'
+	utility, -format produces user-controlled formatted output similar
+	to -format in 'identify'.  This is accomplished via a
+	'info:format=value' define.
+
+	* magick/image.c (AddDefinition): New function for adding just one
+	define to definitions list.
+
+2012-04-11  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* coders/pnm.c (ReadPNMImage): Completely disable OpenMP in reader
+	because there is too much contention.
+
+	* magick/pixel_iterator.c: Dereference image to be modified in
+	non-threaded context in order to lessen contention.
+
+	* magick/semaphore.c (AllocateSemaphoreInfo): Make sure that
+	SemaphoreInfo does not share cache lines with another semaphore.
+
+2012-04-11  Glenn Randers-Pehrson  <glennrp@simplesystems.org>
+
+	* coders/png.c: fixed problem with bit depth when the encoder
+	decides to write RGBA instead of indexed PNG, by delaying the
+	call to png_set_tRNS() until after calling png_set_IHDR().
+
+2012-03-30  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* png: Update bundled libpng to 1.5.10 release.  Provides security
+	fix for CVE-2011-3048.
+
+	* wand/magick_compat.c (ParseGeometry): Use strlcpy() rather than
+	strncpy().
+	(CopyMagickString): Depend on strlcpy() because we provide it if
+	it is missing.
+	(ConcatenateMagickString): Depend on strlcat().
+
+	* coders/xcf.c (ReadXCFImage): Now respects image subimage and
+	subrange members so that returned image layers may be selected.
+	Based on patch from SourceForge issue 3513025 "XCF reads all
+	layers all the time".
+
+	* magick/resize.c (ThumbnailImage): Thumbnail default filter is
+	intended to be the box filter, but allow the user to override the
+	filter used.  Resolves SourceForge issue 3513239 "-filter command
+	line argument ignored".
+
+2012-03-17  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/command.c (ConvertImageCommand, MogrifyImageCommand):
+	Added support for '+noise random' and '-operator noise-random' to
+	'convert' and 'mogrify'.
+
+	* magick/effect.c (AddNoiseImage): Added support for RandomNoise.
+	(AddNoiseImageChannel): Added support for RandomNoise.
+
+	* magick/enum_strings.c (StringToNoiseType): New function to
+	convert a string to a NoiseType enumeration value.
+	(NoiseTypeToString): New function to convert a NoiseType
+	enumeration value into a string.
+
+	* PerlMagick/Magick.xs: Added support for RandomNoise.
+
+	* magick/operator.c (QuantumOperatorRegionImage): Added support for
+	RandomNoise.
+
+	* magick/effect.c (AddNoiseImageChannel): Added support for
+	RandomNoise.
+
+	* magick/gem.c (GenerateDifferentialNoise): Added support for
+	RandomNoise.
+
+	* magick/random.h (MagickRandomRealInlined): The span of
+	MagickRandomRealInlined() is now slightly more accurate.
+
+	* magick/image.h (enum NoiseType): New enumeration value RandomNoise.
+
+2012-03-04  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/command.c (MogrifyImage): Add support for -repage option
+	to composite, convert, mogrify, and montage subcommands.  Resets
+	or adjusts the current image page offsets based on a provided
+	geometry specification.
+
+	* magick/image.c (ResetImagePage): Add a function to adjust the
+	current image page canvas and position based on a relative page
+	specification.
+
+2012-03-03  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/command.c (MogrifyImage): Add support for -strip option
+	to composite, convert, mogrify, and montage subcommands.  Removes
+	all profiles and text attributes from the image.
+
+	* magick/image.c (StripImage): New function to remove all profiles
+	and text attributes from the image.
+
+2012-02-25  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* Release GraphicsMagick 1.3.14.
+
+	* NEWS.txt: Updated to describe updates since last release.
+
+2012-02-19  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* Downgrade to Automake 1.11.2 so that test suite can run on
+	systems with limited command line length.  This means that lzip
+	support is temporarily removed.
+
+	* magick/resize.c (ResizeImage): Resize filter argument was being
+	ignored.  Filter from image 'filter' member was used instead.
+	Problem was reported by Steven Bakhtiari.
+
+2012-02-18  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* tiff: Update bundled libtiff to 4.0.1 release.
+
+	* png: Update bundled libpng to 1.5.9 release.
+
+	* magick/memory.h: Decorate memory allocation functions with GCC
+	attribute 'alloc_size'.
+
+	* magick/common.h: Add support for GCC 4.3+ attributes
+	'alloc_size', 'hot', 'cold'.
+
+	* magick/{log.h,monitor.h,utility.h}: Use double-underscore syntax
+	in GCC format attribute specifications to defend against
+	accidental macro expansion.
+
+2012-02-09  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* coders/xcf.c (ReadXCFImage): Fix reading XCF which is comprised
+	of different sized layers.
+
+2012-02-08  Glenn Randers-Pehrson  <glennrp@simplesystems.org>
+
+	* coders/txt.c: Added "-define txt:with-im-header" option.
+
+2012-02-05  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* png: Updated to libpng 1.5.8 release
+
+	* zlib: Updated to zlib 1.2.6 release
+
+2012-02-04  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* Makefile.am (AUTOMAKE_OPTIONS): Update to Automake 1.11.3.  Add
+	lzip compressed archive to options.
+
+2012-01-30  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* coders/dcraw.c (RegisterDCRAWImage): Add support for Mamiya
+	Photo RAW "MEF" format.  Resolves SourceForge issue #3481508
+	"*.MEF file open incorrect".
+
+2012-01-29  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* coders/jpeg.c (WriteJPEGImage): Convert RGB-compatible
+	colorspaces (e.g. CineonLog) to RGB by default since that was the
+	case prior to release 1.3.13.  User can still override it
+	(avoiding removal of log encoding) by explicitly specifying the
+	desired colorspace.  Problem was reported by Gary Margiotta.
+
+2012-01-21  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* coders/dpx.c (ReadDPXImage): When reading, save input file
+	endianness so that the endianness of the original file is
+	preserved by default.  The user is able to override this default
+	via -endian.  Problem was reported by JongAm Park.
+
+2012-01-19  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* www/OpenMP.rst: Updated OpenMP results based on latest OpenMP
+	tunings and the Intel Xeon E5649 CPU.
+
+2012-01-17  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* coders/dcraw.c (ReadDCRAWImage): Fix memory leak of ImageInfo.
+	Resolves SourceForge bug #3475148 "memery leaks".
+
+	* magick/module.c (ModuleAliases): EMF format is supported by EMF
+	module and so mapping EMF to the WMF module caused EMF not to
+	work.  Resolves SourceForge bug #3475147 "emf files can not be
+	opened".  Note that the EMF module only works for Microsoft
+	Windows.
+
+2012-01-15  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/gem.c (Hull): Improve performance.
+
+	* magick/effect.c (DespeckleImage): Improve performance.
+
+2012-01-12  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/effect.c (DespeckleImage): Using schedule(static,4)
+	blocks any opportunity for speedup.  This was a performance
+	regression.  Oops!
+
+2012-01-10  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* wand/magick_wand.c (MagickExtentImage): Added
+	MagickExtentImage() to Wand API.  Resolves SourceForge issue
+	#3471915 "MagickExtentImage in the Wand C API".
+
+2012-01-08  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/export.c (ExportViewPixelArea): Break up implementation
+	into subroutines to ease compilation.
+
+2012-01-03  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/import.c (ImportViewPixelArea): Break up implementation
+	into subroutines to ease compilation.
+
+2012-01-01  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* magick/studio.h: Use Magick prefixed macro names for ftruncate,
+	mmap, and munmap in order to assure that introducing our macros
+	does not cause trouble with system headers.
